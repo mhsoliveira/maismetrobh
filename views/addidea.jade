@@ -1,0 +1,83 @@
+extends layout2
+
+block content
+    body
+      div.container
+        if(user)
+          script(type='text/javascript').
+              var userId = '#{user.username}';
+              var user = '#{user._id}';
+        div(class='col-md-12', style='padding-left: 0px; padding-right: 0px')
+          h1(style='padding-left: 0px; padding-right: 0px') Nova Proposta
+        div(class='col-md-8', style='padding-left: 0px; padding-right: 0px')
+          #map(class='showmap', style='height:500px')
+          div#firstPop
+            a(class='b-close') entendi
+            div.textpop
+              texto O SEU TRAJETO DE METRO
+            div.textpop
+              textored ALGUMAS DICAS
+            div.textpop
+              textored 1 _
+              texto  Pense no seu dia-a-dia e quais são os pontos da cidade mais importantes para a sua rotina.
+            div.textpop
+              textored 2 _
+              texto  Qual linha de metro atenderia todos esses pontos?
+            div.textpop
+              textored 3 _
+              texto  Desenhe no mapa as estações para a sua linha.
+          div#secondPop(class='bubble')
+            div.textpop
+              texto PARA COMEÇAR
+              div.textpop
+              texto A DESENHAR
+              textored  A SUA LINHA
+            div.textpop
+              texto  SELECIONE ESSA FERRAMENTA
+        div(id='addProp', class='col-md-4', style='padding-left: 0px; padding-right: 0px')
+          div(class='col-md-12')
+            .h2(style='margin-top: 0px') Onde começa a sua linha?
+            input#inputIdeaRef1(type='text', placeholder='ex. #aeroportoCarlosPrates', class="incomment",  style='width:100%')
+          div(class='col-md-12')
+            .h2 Aponte uma referência no meio do seu trajeto
+            input#inputIdeaRef2(type='text', placeholder='ex. #minerão, #pcaSete, #pqMunicipal' , class="incomment",  style='width:100%')
+          div(class='col-md-12')
+            .h2 Onde termina a sua linha?
+            input#inputIdeaRef3(type='text', placeholder='ex. #UFMG, #taquaril, #hospJuliaKubitscheck', class="incomment",  style='width:100%')
+          div(class='col-md-12')
+            .h2 Descreva o seu trajeto
+            textarea(id="inputIdeaDesc", cols="40", rows="5", placeholder='Descreva sua proposta' class="incomment",  style='width:100%')
+          div(class='col-md-12')
+            button#btnAddIdea(class='btn login') Nova Proposta
+              span(class="glyphicon glyphicon-ok")
+    footer(class="footer")
+      div.container
+        div.col-md-4
+          ul.ulmapasite Mapa do site
+            li.liredux
+              a.mapasite(href="/") Início
+            li.liredux
+              a.mapasite(href="/addidea/") Novo Trajeto
+            li.liredux
+              a.mapasite(href="#debate") Debate
+            li.liredux
+              a.mapasite(href="/contato/") Contato
+            li.liredux
+              a.mapasite(href="/projeto/") Projeto
+        div.col-md-8(style='padding-right:10px;')
+          div.col-md-12(style='padding-right:0px; margin-top:10px')
+            img.siganos(src='../images/footer_03.png', style='float:right')
+          ul(class="list-inline", style='float: right; margin-top:10px')
+            a(href="https://www.facebook.com")
+              img.redes(src='../images/footer_05.png')
+            a(href="https://www.twitter.com")
+              img.redes(src='../images/footer_07.png')
+            a(href="https://plus.google.com")
+              img.redes(src='../images/footer_06.png')
+
+
+    script(src='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js')
+    script(src='http://leaflet.github.io/Leaflet.draw/leaflet.draw.js')
+    script(src='../bower_components/bPopup/jquery.bpopup.min.js')
+    script(src='/javascripts/drawmap.js')
+    script(src='/javascripts/global.js')

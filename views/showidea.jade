@@ -1,0 +1,129 @@
+extends layout2
+
+block content
+    body
+      if (user)
+        script(type='text/javascript').
+          var userId = '#{user.username}';
+          var user = '#{user._id}';
+      div.container
+        h1 Trajetos
+        div.col-md-9(style='padding-right:0px; padding-left:0px')
+          div(class='col-md-6 h2', style='padding-top: 9px')
+            - each ref in references
+              li.refs.ref #{ref}
+          div(class='col-md-3', style='display:flex; float:right; padding-right:0px;')
+            div(class = 'h2', style='padding-top: 9px') Avalie:
+            #rate(class='h2', style='padding-top: 9px')
+              script(src='https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.1.1/jquery.rateyo.min.js')
+            #countRate(class = 'h2', style='text-align: right; padding-top: 9px')
+        div(class='col-md-9', style='padding-right:0px')
+          #map(class='showmap')
+          script(src='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js')
+          script(type='text/javascript').
+              var ideaId = '#{ideaId}';
+              var rating = [#{rating}];
+              var cnt5 = 0;
+              var cnt4 = 0;
+              var cnt3 = 0;
+              var cnt2 = 0;
+              var cnt1 = 0;
+              for(var i = 0; i < rating.length; ++i){
+                if(rating[i] == 5) {cnt5++;}
+                if(rating[i] == 4) {cnt4++;}
+                if(rating[i] == 3) {cnt3++;}
+                if(rating[i] == 2) {cnt2++;}
+                if(rating[i] == 1) {cnt1++;}
+              }
+              var avgrate = Number;
+              if (rating.length>1) {
+                console.log(rating.length);
+                var sum = rating.reduce(function(a, b) { return a + b; });
+                var avg = sum / rating.length;
+                console.log(avg);
+              }
+              else {
+                avg = #{rating};
+              }
+          script(src='/javascripts/commentpost.js')
+          script(src='/javascripts/showmap.js')
+        div(class='col-md-3', style='padding-left:0px')
+          div(class='col-md-4')
+            img.avatar(src='#{userProp.picture}')
+          div(class='col-md-8', style='padding-right:0px')
+            p Trajeto por:
+            p(style='font-weight: bold') #{userProp.username}
+            p #{date}
+          div(class='col-md-12')
+            .h2 Avaliação dos utilizadores:
+            div.col-md-12(style='padding-left: 0px; padding-right: 0px;')
+              img(src='../images/5stars.png', style='display:inline; height:20px; padding-bottom:2px')
+              rateList.tot5
+              rateList.per5
+            div.col-md-12(style='padding-left: 0px; padding-right: 0px;')
+              img(src='../images/4stars.png', style='display:inline; height:20px; padding-bottom:2px')
+              rateList.tot4
+              rateList.per4
+            div.col-md-12(style='padding-left: 0px; padding-right: 0px;')
+              img(src='../images/3stars.png', style='display:inline; height:20px; padding-bottom:2px')
+              rateList.tot3
+              rateList.per3
+            div.col-md-12(style='padding-left: 0px; padding-right: 0px;')
+              img(src='../images/2stars.png', style='display:inline; height:20px; padding-bottom:2px')
+              rateList.tot2
+              rateList.per2
+            div.col-md-12(style='padding-left: 0px; padding-right: 0px;')
+              img(src='../images/1stars.png', style='display:inline; height:20px; padding-bottom:2px')
+              rateList.tot1
+              rateList.per1
+
+        div(class="col-md-9", style='padding-right:0px')
+          div(class="col-md-12 description")
+            div(class="col-md-1", style='padding-right:0px;')
+              img.avatar(src='#{userProp.picture}')
+            div(class="col-md-11", style='margin-top: 10px; margin-bottom: auto; padding-left:30px')
+              p(style='font-weight:bold') #{userProp.username}:
+              div #{description}
+          h2(class="col-md-12", style='margin-left:72px') Comentários
+        div(class="col-md-9", style='padding-right:0px')
+            - each Comment in comments
+              div(class="col-md-12 comment")
+                div(class="col-md-1", style='padding-right:0px; padding-left:10px;')
+                  img.avatarcom(src='#{Comment.photo}')
+                div(class="col-md-11")
+                  p(style='font-weight:bold') #{Comment.user}:
+                  div #{Comment.body}
+            if (user)
+              div(class="col-md-12 reply")
+                div(class="col-md-10")
+                  input#inputNewComment(class="col-md-12 incomment", type='text', placeholder='Escreva um comentário')
+                  button#btnAddComment(class="btn btcomment", style='float: right') Comentar
+                div(class="col-md-2")
+                  img.avatar(src='#{user.picture}', style='border-radius: 100%')
+            if (!user)
+              a(class='col-md-11', style='float:right; padding-left:30px;', href="/login") Registre-se ou faça seu login para comentar essa proposta
+
+    footer(class="footer")
+      div.container
+        div.col-md-4
+          ul.ulmapasite Mapa do site
+            li.liredux
+              a.mapasite(href="/") Início
+            li.liredux
+              a.mapasite(href="/addidea/") Novo Trajeto
+            li.liredux
+              a.mapasite(href="#debate") Debate
+            li.liredux
+              a.mapasite(href="/contato/") Contato
+            li.liredux
+              a.mapasite(href="/projeto/") Projeto
+        div.col-md-8(style='padding-right:10px;')
+          div.col-md-12(style='padding-right:0px; margin-top:10px')
+            img.siganos(src='../images/footer_03.png', style='float:right')
+          ul(class="list-inline", style='float: right; margin-top:10px')
+            a(href="https://www.facebook.com")
+              img.redes(src='../images/footer_05.png')
+            a(href="https://www.twitter.com")
+              img.redes(src='../images/footer_07.png')
+            a(href="https://plus.google.com")
+              img.redes(src='../images/footer_06.png')

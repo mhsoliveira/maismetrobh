@@ -1,0 +1,63 @@
+extends layout2
+
+block content
+    body
+      div.col-md-12(style='margin-bottom:15px; padding-right:35px;')
+          div.col-md-4(style='border-bottom: dashed; border-width:thin; float:Right; padding-right:0px;')
+            h1(style='text-align:right; padding-right:0px;') Fale
+              textored  Conosco
+      div.container(style='margin-bottom:20px')
+        div(class='col-md-7', style='padding-right:100px')
+          div
+            h2 Fale Conosco
+            p.main Esteja à vontade para enviar as suas mensagens, principalmente se:
+            p - Tiver dúvidas sobre o funcionamento do site;
+            p - Tiver sugestões e recomendações;
+            p - Quiser saber mais sobre o projeto;
+            p - Quiser colaborar com o projecto;
+          div
+            h2 Acesso aos dados
+            p.main(style='text-align:justify') Toda a informação gerada pelo mais
+              textoblue  +
+              textored Metro
+              texto  também poderá ser disponibilizada, em caráter individual, para fins educacionais ou pesquisas de interesse público desde que seja enviada uma proposta de pesquisa com uma breve descrição do tema, nome, contato do pesquisador, instituição de pesquisa e grau do estudo;
+        div#message(class='col-md-5', style='padding-left:0px; padding-right:0px;')
+          div(class='col-md-12')
+            .h2(style='margin-bottom:2px') Email
+            input#replyTo(type='text', class="incomment",  style='width:100%')
+          div(class='col-md-12')
+            .h2(style='margin-bottom:2px') Assunto
+            input#subject(type='text', class="incomment",  style='width:100%')
+          div(class='col-md-12')
+            .h2(style='margin-bottom:2px') Mensagem
+            textarea(id="content", cols="40", rows="5", class="incomment",  style='width:100%')
+          div(class='col-md-12')
+            button#send_email(class='btn login', style='padding-top:2px;padding-bottom:2px;') Enviar
+
+    footer(class="footer")
+      div.container
+        div.col-md-4
+          ul.ulmapasite Mapa do site
+            li.liredux
+              a.mapasite(href="/") Início
+            li.liredux
+              a.mapasite(href="/addidea/") Novo Trajeto
+            li.liredux
+              a.mapasite(href="#debate") Debate
+            li.liredux
+              a.mapasite(href="/contato/") Contato
+            li.liredux
+              a.mapasite(href="/projeto/") Projeto
+        div.col-md-8(style='padding-right:10px;')
+          div.col-md-12(style='padding-right:0px; margin-top:10px')
+            img.siganos(src='../images/footer_03.png', style='float:right')
+          ul(class="list-inline", style='float: right; margin-top:10px')
+            a(href="https://www.facebook.com")
+              img.redes(src='../images/footer_05.png')
+            a(href="https://www.twitter.com")
+              img.redes(src='../images/footer_07.png')
+            a(href="https://plus.google.com")
+              img.redes(src='../images/footer_06.png')
+
+
+    script(src='/javascripts/message.js')

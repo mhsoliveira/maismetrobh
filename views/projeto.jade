@@ -1,0 +1,93 @@
+extends layout2
+
+block content
+    body
+      div.container
+        div(style='height:260')
+          div.col-md-4
+            img.logoProjeto(src='../images/Logo.jpg')
+          div.col-md-8(style='padding-right: 0px !important;')
+            div.col-md-12(style='float: right !important; padding-right: 0px !important;')
+              h2.texto(style='font-size: 40px; float: right !important; padding-right: 0px !important; padding-top: 80px;') Sobre o
+                textored  Projeto
+            nav.col-md-9(style='float: right !important; padding-right: 0px !important; padding-top: 20px;')
+              ul(class="list-inline", style='float: right; margin-left:0px; padding-right:2px; padding-top:7px; border-top: dashed; border-width: 1px;')
+                li.icomenu
+                  a(href="#+metro", style='color: #000 !important;') Sobre
+                li.icomenu
+                  a(href="#participacao", style='color: #000 !important;') Participação
+                li.icomenu
+                  a(href="#debate", style='color: #000 !important;') Debate
+                li.icomenu
+                  a(href="#compromisso", style='color: #000 !important;') Compromisso
+                li.icomenu
+                  a(href="#", style='color: #000 !important;') Equipa
+    a(name='+metro')
+    div.box
+      div.container
+        h2(style='font-size:50px;')
+          textoblue +
+          textored  Metro
+        p(class="lead", style='padding-top:20px;') É uma plataforma colaborativa de apoio às decisões sobre o transporte público em Belo Horizonte.
+        p(class="lead", style='padding-top:20px;') Inspirado na Linie Funf, desenvolvida na cidade de Hamburg, o
+          textoblue  +
+          textored Metro
+          texto  propõe criar um espaço para a formação de um debate público amplo, informativo e empoderador
+    a(name='participacao')
+    hr
+    div.box
+      div.container
+        h2(style='font-size:50px;')
+          textoblue +
+          textored  Participação
+        p(class="lead", style='padding-top:20px;') Pensar transportes para uma cidade do tamanho de Belo Horizonte só é possível com a participação de cada um.
+        p(class="lead", style='padding-top:20px;') Nesse debate não há certo ou errado, cada detalhe conta e a sua participação só tem a ajudar a construção de uma Belo Horizonte mais próxima do seu povo.
+    a(name='debate')
+    hr
+    div.box
+      div.container
+        h2(style='font-size:50px;')
+          textoblue +
+          textored  Debate
+        p(class="lead", style='padding-top:20px;') O
+          textoblue  +
+          textored Metro
+          texto  não é um concurso de ideias.
+        p(class="lead", style='padding-top:20px;') Todas as propostas, avaliações e comentários que fizer são importantes para perceber as necessidades do povo de Belo Horizonte.
+    a(name='compromisso')
+    hr
+    div.box
+      div.container
+        h2(style='font-size:50px;')
+          textoblue +
+          textored  Compromisso
+        p(class="lead", style='padding-top:20px;') Ao participar, desenhando o seu trajeto, está a juntar a sua voz à de outros habitantes que partilham o mesmo interesse. Um grande número de participantes será um grande argumento para o seu governante prestar atenção.
+        p(class="lead", style='padding-top:20px;') Com o
+          textoblue  +
+          textored Metro
+          , queremos levar a sua ideia ao poder local.
+
+    footer(class="footer")
+      div.container
+        div.col-md-4
+          ul.ulmapasite Mapa do site
+            li.liredux
+              a.mapasite(href="/") Início
+            li.liredux
+              a.mapasite(href="/addidea/") Novo Trajeto
+            li.liredux
+              a.mapasite(href="#debate") Debate
+            li.liredux
+              a.mapasite(href="/contato/") Contato
+            li.liredux
+              a.mapasite(href="/projeto/") Projeto
+        div.col-md-8(style='padding-right:10px;')
+          div.col-md-12(style='padding-right:0px; margin-top:10px')
+            img.siganos(src='../images/footer_03.png', style='float:right')
+          ul(class="list-inline", style='float: right; margin-top:10px')
+            a(href="https://www.facebook.com")
+              img.redes(src='../images/footer_05.png')
+            a(href="https://www.twitter.com")
+              img.redes(src='../images/footer_07.png')
+            a(href="https://plus.google.com")
+              img.redes(src='../images/footer_06.png')
