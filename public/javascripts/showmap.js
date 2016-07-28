@@ -3,7 +3,8 @@ L.tileLayer('http://b.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'})
 .addTo(map);
 
-$.getJSON('/ideasfind/'+ideaId, function(data) {
+$.getJSON('/ideasfind2/'+ideaId, function(data) {
+  console.log(data);
 addLayer(data);
 addPoints(data);
 });

@@ -30,7 +30,7 @@ router.get('/all', function(req, res, next) {
 router.get('/send', function(req, res, next) {
   var helper = require('sendgrid').mail;
   from_email = new helper.Email(req.query.replyTo);
-  to_email = new helper.Email("hsoliveira.matheus@gmail.com");
+  to_email = new helper.Email(process.env.EMAIL_SG);
   subject = req.query.subject;
   content = new helper.Content("text/plain", req.query.text);
   mail = new helper.Mail(from_email, subject, to_email, content);
@@ -78,7 +78,7 @@ router.get('/ideasfind/:user', function (req, res) {
 });
 
 //Route to Find by Id
-router.get('/ideasfind/:idea_id', function (req, res) {
+router.get('/ideasfind2/:idea_id', function (req, res) {
   Idea.findById(req.params.idea_id, function(err, data) {
     if (err)
     res.send(err);
