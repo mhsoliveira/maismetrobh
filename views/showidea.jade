@@ -23,6 +23,7 @@ block content
           script(type='text/javascript').
               var ideaId = '#{ideaId}';
               var rating = [#{rating}];
+              var judgers = '#{judgers}';
               var cnt5 = 0;
               var cnt4 = 0;
               var cnt3 = 0;
@@ -37,10 +38,8 @@ block content
               }
               var avgrate = Number;
               if (rating.length>1) {
-                console.log(rating.length);
                 var sum = rating.reduce(function(a, b) { return a + b; });
                 var avg = sum / rating.length;
-                console.log(avg);
               }
               else {
                 avg = #{rating};

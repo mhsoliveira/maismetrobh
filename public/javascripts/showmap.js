@@ -4,9 +4,8 @@ L.tileLayer('http://b.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png', {
 .addTo(map);
 
 $.getJSON('/ideasfind2/'+ideaId, function(data) {
-  console.log(data);
-addLayer(data);
-addPoints(data);
+  addLayer(data);
+  addPoints(data);
 });
 
 

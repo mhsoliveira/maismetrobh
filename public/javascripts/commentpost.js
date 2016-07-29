@@ -41,16 +41,17 @@ var idearating = {
   ratedFill: "#ec6655",
   fullStar: true,
   onSet: function (rating, rateYoInstance) {
-    console.log(rating);
     var rate = {
-      rating: rating
-      };
-    $.ajax({
-        type: 'PUT',
-        data: rate,
-        url: '/rate/'+ideaId,
-        dataType: 'JSON'
-    });
+      rating: rating,
+      judger: user
+    };
+    if(judgers.search(user)<0){$.ajax({
+      type: 'PUT',
+      data: rate,
+      url: '/rate/'+ideaId,
+      dataType: 'JSON'
+    });}
+    else{alert("Você já avaliou essa proposta. Avalie outra.");}
   }
 }
 
@@ -67,7 +68,6 @@ function addComment(event) {
 
         // If it is, compile all user info into one object
         var newcomment = {ncomment: { body: $('input#inputNewComment').val(), user: userId, photo: userPhoto }};
-        console.log(newcomment);
         // Use AJAX to post the object to our adduser service
         $.ajax({
             type: 'PUT',

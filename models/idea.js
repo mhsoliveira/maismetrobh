@@ -7,6 +7,7 @@ var IdeaSchema = new Schema({
     apoios: Number,
     coordinates: [],
     rating: {type: [Number], default:0},
+    judgers:[String],
     desc: {type: [String], default:''},
     refs: {type: [String], default:''},
     comments: [{ body: String, user: String, photo: String }],

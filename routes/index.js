@@ -102,6 +102,7 @@ router.get('/ideas/:idea_id', function (req, res) {
     res.send(err);
   res.render('showidea', {
     ideaId: docs._id,
+    judgers: docs.judgers,
     userProp: docs.user,
     description: docs.desc,
     references: docs.refs,
@@ -122,6 +123,7 @@ router.post('/newidea', function(req, res) {
   idea.refs = req.body.refs;
   idea.desc = req.body.desc;
   idea.rating = 5;
+  idea.judgers = req.body.judger;
   idea.date = req.body.date;
   idea.user = req.body.user;
   idea.coordinates = req.body.coordinates.map(function (pair) {
@@ -170,6 +172,7 @@ router.put('/rate/:id', function(req, res) {
     res.send(err);
     // update likes or comments
     docs.rating.push(req.body.rating);
+    docs.judgers.push(req.body.judger);
     // Save the updates and check for errors
     docs.save(function(err) {
       if (err)

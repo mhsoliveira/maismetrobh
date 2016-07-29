@@ -71,6 +71,7 @@ function addIdea(event) {
         // If it is, compile all user info into one object
         var newIdea = {
             desc: $('#inputIdeaDesc').val(),
+            judger: user,
             user: {
               username: userId,
               picture: userPic
