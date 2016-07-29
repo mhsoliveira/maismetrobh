@@ -38,8 +38,12 @@ function reg(event) {
             type: 'POST',
             data: userReg,
             url: '/register',
-            dataType: 'JSON'
-        }).done(function(response) {
+            dataType: 'JSON',
+            statusCode: {
+              500: function() {
+                alert("Nome de usuário já cadastrado");
+              }}
+            }).done(function(response) {
           if (response.message === 'User Registered') {
 
             // Clear the form inputs
@@ -84,8 +88,13 @@ function log(event) {
             type: 'POST',
             data: userLog,
             url: '/user/login',
-            dataType: 'JSON'
+            dataType: 'JSON',
+            statusCode: {
+              401: function() {
+                alert("Nome ou senha inválidos");
+              }}
         }).done(function(response) {
+          console.log(response)
           if (response.message === 'Logged') {
 
             // Clear the form inputs
