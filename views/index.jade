@@ -3,9 +3,15 @@ extends layout2
 block content
   body
     div.container(style='padding-top:50px')
-      div(class="col-md-5", style='padding: 0px;')
+      div(class="col-sm-5", style='padding: 0px;')
         img.logo(src='../images/Logo.jpg')
-      div(class="col-md-7")
+        if (user)
+          div(class="col-sm-12", style='padding: 5px; margin-top:-50px;')
+            a#btnAddIdea(href='/addidea/', class='btn login', style="float: left !important;") Adicionar Trajeto
+        if (!user)
+          div(class="col-sm-12", style='padding: 5px; margin-top:-50px;')
+            a#btnAddIdea(href='/login/', class='btn login', style="float: left !important;") Adicionar Trajeto
+      div(class="col-sm-7")
         div.headline
           div
             texto Uma linha de
@@ -15,59 +21,66 @@ block content
             texto de
             textobold  Belo Horizonte
         ul.nav2(style='padding-right: 0px !important; padding-top: 14px !important; margin-left: -7px; margin-right: -7px;')
-          div(class="col-md-3", style="padding: 0px;")
+          div(class="col-sm-3", style="padding: 0px;")
             a(class='b', href="/login/")
               img.thumbs(src='../images/Thumbs/registo.jpg')
               p.thumbsTxt Crie sua conta
           if (user)
-            div(class="col-md-3", style="padding: 0px;")
+            div(class="col-sm-3", style="padding: 0px;")
               a(class='b', href="/addidea/")
                 img.thumbs(src='../images/Thumbs/desenha.jpg')
                 p.thumbsTxt Propõe seu trajeto
           if (!user)
-            div(class="col-md-3", style="padding: 0px;")
+            div(class="col-sm-3", style="padding: 0px;")
               a(class='b', href="/login/")
                 img.thumbs(src='../images/Thumbs/desenha.jpg')
                 p.thumbsTxt Propõe seu trajeto
-          div(class="col-md-3", style="padding: 0px;")
+          div(class="col-sm-3", style="padding: 0px;")
             a(class='b', href="#debate")
               img.thumbs(src='../images/Thumbs/debate.jpg')
               p.thumbsTxt Entre no debate
-          div(class="col-md-3", style="padding: 0px;")
-            a(class='b', href="#")
+          div(class="col-sm-3", style="padding: 0px;")
+            a#media(class='b')
               img.thumbs(src='../images/Thumbs/redes-sociais.jpg')
               p.thumbsTxt Partilhe nas redes
-      if (user)
-        div(class="col-md-5", style='padding: 0px;')
-          a#btnAddIdea(href='/addidea/', class='btn login', style="float: left !important;") Adicionar Trajeto
-      if (!user)
-        div(class="col-md-5", style='padding: 0px;')
-          a#btnAddIdea(href='/login/', class='btn login', style="float: left !important;") Adicionar Trajeto
+            div.social.col-sm-12
+              ul
+                li.col-sm-4
+                  a(name="fb_share", href="http://www.facebook.com/sharer.php")
+                    i.fa.fa-lg.fa-facebook
+                li.col-sm-4
+                  a(href='https://twitter.com/home?status=www.maismetrobh.com.br')
+                    i.fa.fa-lg.fa-twitter
+                li.col-sm-4
+                  a(href='https://plus.google.com/share?url=www.maismetrobh.com.br')
+                    i.fa.fa-lg.fa-google-plus
+
+
 
       //icones de navegacao
 
       div.container
-        a.col-md-12(name="debate", style='padding-top:140px')
-        div(id="test-list", class="col-md-12", style='padding:0px;')
-          h2(class="col-md-12", style='margin: auto; padding-left:5px; padding-right:15px; font-size:36px')
+        a.col-sm-12(name="debate", style='padding-top:140px')
+        div(id="test-list", class="col-sm-12", style='padding:0px;')
+          h2(class="col-sm-12", style='margin: auto; padding-left:5px; padding-right:15px; font-size:36px')
             texto Trajetos
             textored  +
             texto pertos de você
-          div(class="col-md-12", style='font-size:40px; padding-left:5px; padding-right:39px; margin-top:10px;')
+          div(class="col-sm-12", style='font-size:40px; padding-left:5px; padding-right:39px; margin-top:10px;')
             p.h2(style='margin-top:10px;') Pesquisas Tags
-            input#inputFilter(type='text', class='search incomment col-md-6', placeholder='#Procurar', style='font-size:13px; padding:2px; margin-top:10px;')
-            div(class="col-md-12", style='font-size:40px; padding:0px; margin-top:10px;')
+            input#inputFilter(type='text', class='search incomment col-sm-6', placeholder='#Procurar', style='font-size:13px; padding:2px; margin-top:10px;')
+            div(class="col-sm-12", style='font-size:40px; padding:0px; margin-top:10px;')
           ul(id='refs', class='list', style='margin: auto; padding-left:0px; padding-right:10px;')
 
             //icone para cada uma das ideias
 
             - each Idea in ideas
-              li.row(id='node', class='col-md-6', style='margin: auto; padding-left:5px; padding-right:5px;')
+              li.row(id='node', class='col-sm-6', style='margin: auto; padding-left:5px; padding-right:5px;')
                 div.row(style='margin: auto; width:100%')
                   p.ref(class='refs1')= Idea.refs[0]
                   p.ref(class='refs2')= Idea.refs[1]
                   p.ref(class='refs3')= Idea.refs[2]
-                div.row(class='col-md-12', style='margin: auto; padding: 0px; margin-top:10px;')
+                div.row(class='col-sm-12', style='margin: auto; padding: 0px; margin-top:10px;')
                   a(href="/ideas/"+Idea._id, class="icon")
                     div(style='margin-right:30px; margin-bottom:0px')
 
@@ -77,15 +90,15 @@ block content
                       div(id='#{Idea.id}')(style='height: 250px')
                     div.row(style='margin-top: 8px; margin-left:0px; margin-right:0px')
                       img.avatar(src=Idea.user.picture, style='float:left; padding: 0px; background-color:#fff')
-                      div(class='col-md-10', style='margin-top: auto; margin-bottom: auto; padding: 0px; margin-left:5px;')
-                        p.txicon(class='col-md-12', style='padding-left: 6px')= Idea.user.username
-                        div(id='#{Idea.id}'+'m', class='col-md-10')
-                        p.txicon(class='col-md-2', style='padding-left: 6px')= "("+Idea.rating.length+")"
-                        p.txicon(class='col-md-12', style='padding-left: 6px')= "Comentários "+Idea.comments.length
+                      div(class='col-sm-10', style='margin-top: auto; margin-bottom: auto; padding: 0px; margin-left:5px;')
+                        p.txicon(class='col-sm-12', style='padding-left: 6px')= Idea.user.username
+                        div(id='#{Idea.id}'+'m', class='col-sm-10')
+                        p.txicon(class='col-sm-2', style='padding-left: 6px')= "("+Idea.rating.length+")"
+                        p.txicon(class='col-sm-12', style='padding-left: 6px')= "Comentários "+Idea.comments.length
 
           // pagination
 
-          div(class='col-md-12')
+          div(class='col-sm-12')
             ul(class='pagination')
 
         //JQUERY
@@ -101,7 +114,7 @@ block content
 
   footer(class="footer")
     div.container
-      div.col-md-4
+      div.col-sm-4
         ul.ulmapasite Mapa do site
           li.liredux
             a.mapasite(href="/") Início
@@ -113,8 +126,8 @@ block content
             a.mapasite(href="/contato/") Contato
           li.liredux
             a.mapasite(href="/projeto/") Projeto
-      div.col-md-8(style='padding-right:10px;')
-        div.col-md-12(style='padding-right:0px; margin-top:10px')
+      div.col-sm-8(style='padding-right:10px;')
+        div.col-sm-12(style='padding-right:0px; margin-top:10px')
           img.siganos(src='../images/footer_03.png', style='float:right')
         ul(class="list-inline", style='float: right; margin-top:10px')
           a(href="https://www.facebook.com")

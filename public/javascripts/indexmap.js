@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  $("#media").click(function(){
+    $(".social").toggle();
+  });
+
     var MyCustomMarker = new L.Icon({
             shadowUrl: null,
             iconAnchor: new L.Point(23, 18),
