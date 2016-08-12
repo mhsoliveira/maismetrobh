@@ -35,23 +35,26 @@ $(document).ready(function() {
 //ajax call
 
 var idearating = {
-  rating: avg,
-  starWidth: "16px",
-  normalFill: "#ffd746",
-  ratedFill: "#ec6655",
-  fullStar: true,
-  onSet: function (rating, rateYoInstance) {
-    var rate = {
-      rating: rating,
-      judger: user
-    };
-    if(judgers.search(user)<0){$.ajax({
-      type: 'PUT',
-      data: rate,
-      url: '/rate/'+ideaId,
-      dataType: 'JSON'
-    });}
-    else{alert("Você já avaliou essa proposta. Avalie outra.");}
+    rating: avg,
+    starWidth: "16px",
+    normalFill: "#ffd746",
+    ratedFill: "#ec6655",
+    fullStar: true,
+    onSet: function (rating, rateYoInstance) {
+      if(typeof user !== 'undefined'){
+      var rate = {
+        rating: rating,
+        judger: user
+      };
+      if(judgers.search(user)<0){$.ajax({
+        type: 'PUT',
+        data: rate,
+        url: '/rate/'+ideaId,
+        dataType: 'JSON'
+      });}
+      else{alert("Você já avaliou essa proposta. Avalie outra.");};
+    }
+    else{window.location.replace("/login");}
   }
 }
 
