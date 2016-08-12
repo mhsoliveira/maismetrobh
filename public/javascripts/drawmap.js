@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 
     var map = L.map("map").setView([-19.9129,-43.9409], 13);
-    L.tileLayer('http://b.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+    L.tileLayer('http://b.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'}).addTo(map);
     var drawnItems = new L.FeatureGroup();
       map.addLayer(drawnItems);
 

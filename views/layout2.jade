@@ -14,7 +14,7 @@ html
         link(rel='stylesheet', href='../stylesheets/style2.css')
         link(rel='stylesheet', href='../stylesheets/bootstrap/bootstrap.min.css')
         link(rel='stylesheet', href="../stylesheets/rateyo/jquery.rateyo.min.css")
-        link(rel='stylesheet', href="../stylesheets/bootstrap/font-awesome.min.css")
+        link(rel='stylesheet', href="../stylesheets/bootstrap/font-awesome-4.6.3/css/font-awesome.min.css")
         script(src="../javascripts/jquery/jquery.min.js")
         script(src='../javascripts/bootstrap/bootstrap.min.js')
         script(src='../javascripts/leaflet/leaflet.js')
@@ -22,7 +22,8 @@ html
     header(style='margin-bottom:70px')
       nav(class='navbar banner navbar-fixed-top')
         div.container
-          img.bannerLogo(src='../images/+metro.png')
+          a(href="/")
+            img.bannerLogo(src='../images/+metro.png')
           ul(class="list-inline", style='float: right; margin-top:32px; margin-right:15px; width:400px')
             li.ico.col-sm-3
               a(href="/", style="color: rgb(255, 255, 255); float: right") Início
