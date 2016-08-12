@@ -7,9 +7,9 @@ block content
           script(type='text/javascript').
               var userId = '#{user.username}';
               var user = '#{user._id}';
-        div(class='col-md-12', style='padding-left: 0px; padding-right: 0px')
+        div(class='col-sm-12', style='padding-left: 0px; padding-right: 0px')
           h1(style='padding-left: 0px; padding-right: 0px') Nova Proposta
-        div(class='col-md-8', style='padding-left: 0px; padding-right: 0px')
+        div(class='col-sm-8', style='padding-left: 0px; padding-right: 0px')
           #map(class='showmap', style='height:500px')
           div#firstPop
             a(class='b-close') entendi
@@ -34,25 +34,26 @@ block content
               textored  A SUA LINHA
             div.textpop
               texto  SELECIONE ESSA FERRAMENTA
-        div(id='addProp', class='col-md-4', style='padding-left: 0px; padding-right: 0px')
-          div(class='col-md-12')
+        div(id='addProp', class='col-sm-4', style='padding-left: 0px; padding-right: 0px')
+          div(class='col-sm-12')
             .h2(style='margin-top: 0px') Onde começa a sua linha?
             input#inputIdeaRef1(type='text', placeholder='ex. #aeroportoCarlosPrates', class="incomment",  style='width:100%')
-          div(class='col-md-12')
+          div(class='col-sm-12')
             .h2 Aponte uma referência no meio do seu trajeto
             input#inputIdeaRef2(type='text', placeholder='ex. #minerão, #pcaSete, #pqMunicipal' , class="incomment",  style='width:100%')
-          div(class='col-md-12')
+          div(class='col-sm-12')
             .h2 Onde termina a sua linha?
             input#inputIdeaRef3(type='text', placeholder='ex. #UFMG, #taquaril, #hospJuliaKubitscheck', class="incomment",  style='width:100%')
-          div(class='col-md-12')
+          div(class='col-sm-12')
             .h2 Descreva como essa linha atenderia suas necessidades
             textarea(id="inputIdeaDesc", cols="40", rows="7", placeholder='ex. Usaria muito, porque cria um melhor acesso ao hospital, universidade, meu local de trabalho, etc...', class="incomment",  style='width:100%')
-          div(class='col-md-12')
-            button#btnAddIdea(class='btn login') Nova Proposta
+          div(class='col-sm-12')
+            button#btnAddIdea(class='btn login col-sm-5') Nova Proposta
+            img.loading(src='../images/poi.gif', alt="Só um minutinho...")
 
     footer(class="footer")
       div.container
-        div.col-md-4
+        div.col-sm-4
           ul.ulmapasite Mapa do site
             li.liredux
               a.mapasite(href="/") Início
@@ -64,8 +65,8 @@ block content
               a.mapasite(href="/contato/") Contato
             li.liredux
               a.mapasite(href="/projeto/") Projeto
-        div.col-md-8(style='padding-right:10px;')
-          div.col-md-12(style='padding-right:0px; margin-top:10px')
+        div.col-sm-8(style='padding-right:10px;')
+          div.col-sm-12(style='padding-right:0px; margin-top:10px')
             img.siganos(src='../images/footer_03.png', style='float:right')
           ul(class="list-inline", style='float: right; margin-top:10px')
             a(href="https://www.facebook.com")
@@ -75,9 +76,7 @@ block content
             a(href="https://plus.google.com")
               img.redes(src='../images/footer_06.png')
 
-
-    script(src='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js')
-    script(src='http://leaflet.github.io/Leaflet.draw/leaflet.draw.js')
+    script(src='../javascripts/leafletdraw/leaflet.draw.js')
     script(src='../bower_components/bPopup/jquery.bpopup.min.js')
     script(src='/javascripts/drawmap.js')
     script(src='/javascripts/global.js')

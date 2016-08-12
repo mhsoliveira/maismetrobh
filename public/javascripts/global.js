@@ -9,7 +9,7 @@ $(document).ready(function() {
        onClose: function(){
          $('#secondPop').bPopup({
            follow:[false,false],
-           position: [310,170],
+           position: [305,160],
            modal: false
          });
        }
@@ -43,7 +43,8 @@ $(document).ready(function() {
 // Add User
 function addIdea(event) {
     event.preventDefault();
-
+    $('.loading').show();
+    $('#btnAddIdea').text('Só um min...');
     var monthNames = [
       "Jan", "Fev", "Mar",
       "Abr", "Mai", "Jun", "Jul",
@@ -100,12 +101,16 @@ function addIdea(event) {
             else {
 
                 // If something goes wrong, alert the error message that our service returned
+                $('.loading').hide();
+                $('#btnAddIdea').text('Nova Proposta');
                 alert(err);
 
             }
         });
     }
     else {
+        $('.loading').hide();
+        $('#btnAddIdea').text('Nova Proposta');
         // If errorCount is more than 0, error out
         alert('Please fill in all fields');
         return false;
