@@ -37,7 +37,7 @@ $(document).ready(function() {
 var idearating = {
     rating: avg,
     starWidth: "16px",
-    normalFill: "#ffd746",
+    normalFill: "#e8f8fb",
     ratedFill: "#ec6655",
     fullStar: true,
     onSet: function (rating, rateYoInstance) {
@@ -50,7 +50,10 @@ var idearating = {
         type: 'PUT',
         data: rate,
         url: '/rate/'+ideaId,
-        dataType: 'JSON'
+        dataType: 'JSON',
+        success:function(html){
+                    location.reload();
+                }
       });}
       else{alert("Você já avaliou essa proposta. Avalie outra.");};
     }

@@ -8,8 +8,9 @@ $(document).ready(function() {
       position: [280,215],
        onClose: function(){
          $('#secondPop').bPopup({
+           appendTo: '#map',
            follow:[false,false],
-           position: [305,160],
+           position: [95,22],
            modal: false
          });
        }

@@ -2,26 +2,25 @@ extends layout2
 
 block content
     body
-      div.container
-        div(style='height:260')
-          div.col-md-4
-            img.logoProjeto(src='../images/Logo.jpg')
-          div.col-md-8
-            div.col-md-12(style='float: right !important; padding-right: 0px !important;')
-              h2.texto(style='font-size: 40px; float: right !important; padding-right: 0px !important; padding-top: 80px;') Sobre o
-                textored  Projeto
-            nav.col-md-9(style='float: right !important; padding-right: 0px !important; padding-top: 20px;')
-              ul(class="list-inline", style='float: right; margin-left:0px; padding-right:2px; padding-top:7px; border-top: dashed; border-width: 1px;')
-                li.icomenu
-                  a(href="#+metro", style='color: #000 !important;') Sobre
-                li.icomenu
-                  a(href="#participacao", style='color: #000 !important;') Participação
-                li.icomenu
-                  a(href="#debate", style='color: #000 !important;') Debate
-                li.icomenu
-                  a(href="#compromisso", style='color: #000 !important;') Compromisso
-                li.icomenu
-                  a(href="#equipa", style='color: #000 !important;') Equipe
+      div.container(style='padding-top:60px')
+        div.col-xs-12.col-md-4
+          img.logoProjeto(src='../images/Logo.jpg')
+        div.col-xs-12.col-md-8
+          div.col-xs-12(style='float: right !important; padding-right: 0px !important;')
+            h2.texto(style='font-size: 40px; float: right !important; padding-right: 0px !important; padding-top: 80px;') Sobre o
+              textored  Projeto
+          nav.col-xs-12(style='float: right !important; padding-right: 0px !important; padding-top: 20px;')
+            ul(class="list-inline", style='float: right; margin-left:0px; padding-right:2px; padding-top:7px; border-top: dashed; border-width: 1px;')
+              li.icomenu
+                a(href="#+metro", style='color: #000 !important;') Sobre
+              li.icomenu
+                a(href="#participacao", style='color: #000 !important;') Participação
+              li.icomenu
+                a(href="#debate", style='color: #000 !important;') Debate
+              li.icomenu
+                a(href="#compromisso", style='color: #000 !important;') Compromisso
+              li.icomenu
+                a(href="#equipa", style='color: #000 !important;') Equipe
     a(name='+metro')
     div.box
       div.container
@@ -53,7 +52,7 @@ block content
           textoblue  +
           textored Metro
           texto  não é um concurso de ideias.
-        p(class="lead", style='padding-top:20px;') Todas as propostas, avaliações e comentários que fizer são importantes para perceber as necessidades do povo de Belo Horizonte.
+        p(class="lead", style='padding-top:20px;') Todas as propostas, avaliações e comentários são importantes para perceber as necessidades do povo de Belo Horizonte.
     a(name='compromisso')
     hr
     div.box
@@ -61,7 +60,7 @@ block content
         h2(style='font-size:50px;')
           textoblue +
           textored  Compromisso
-        p(class="lead", style='padding-top:20px;') Ao participar, desenhando o seu trajeto, está a juntar a sua voz à de outros habitantes que partilham o mesmo interesse. Um grande número de participantes será um grande argumento para o seu governante prestar atenção.
+        p(class="lead", style='padding-top:20px;') Ao participar, desenhando o seu trajeto, você junta a sua voz à de outras pessoas que partilham o mesmo interesse. Um grande número de participantes será um forte argumento para o nossos governantes prestarem mais atenção ao nosso transporte público.
         p(class="lead", style='padding-top:20px;') Com o
           textoblue  +
           textored Metro
@@ -84,27 +83,4 @@ block content
             h4 Bruno Vasconcelos
             div.h2 Português de Lisboa
             h4.bio(class="text-muted") Sociólogo e Planeador. Investigador nas áreas da Criatividade, Comunicação e Bairros Criativos.
-    footer(class="footer")
-      div.container
-        div.col-md-4
-          ul.ulmapasite Mapa do site
-            li.liredux
-              a.mapasite(href="/") Início
-            li.liredux
-              a.mapasite(href="/addidea/") Novo Trajeto
-            li.liredux
-              a.mapasite(href="#debate") Debate
-            li.liredux
-              a.mapasite(href="/contato/") Contato
-            li.liredux
-              a.mapasite(href="/projeto/") Projeto
-        div.col-md-8(style='padding-right:10px;')
-          div.col-md-12(style='padding-right:0px; margin-top:10px')
-            img.siganos(src='../images/footer_03.png', style='float:right')
-          ul(class="list-inline", style='float: right; margin-top:10px')
-            a(href="https://www.facebook.com")
-              img.redes(src='../images/footer_05.png')
-            a(href="https://www.twitter.com")
-              img.redes(src='../images/footer_07.png')
-            a(href="https://plus.google.com")
-              img.redes(src='../images/footer_06.png')
+    include ./footer.jade

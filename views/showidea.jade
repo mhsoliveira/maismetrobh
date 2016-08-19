@@ -102,27 +102,4 @@ block content
             if (!user)
               a(class='col-md-11', style='float:right; padding-left:30px;', href="/login") Registre-se ou faça seu login para comentar essa proposta
 
-    footer(class="footer")
-      div.container
-        div.col-md-4
-          ul.ulmapasite Mapa do site
-            li.liredux
-              a.mapasite(href="/") Início
-            li.liredux
-              a.mapasite(href="/addidea/") Novo Trajeto
-            li.liredux
-              a.mapasite(href="#debate") Debate
-            li.liredux
-              a.mapasite(href="/contato/") Contato
-            li.liredux
-              a.mapasite(href="/projeto/") Projeto
-        div.col-md-8(style='padding-right:10px;')
-          div.col-md-12(style='padding-right:0px; margin-top:10px')
-            img.siganos(src='../images/footer_03.png', style='float:right')
-          ul(class="list-inline", style='float: right; margin-top:10px')
-            a(href="https://www.facebook.com")
-              img.redes(src='../images/footer_05.png')
-            a(href="https://www.twitter.com")
-              img.redes(src='../images/footer_07.png')
-            a(href="https://plus.google.com")
-              img.redes(src='../images/footer_06.png')
+    include ./footer.jade

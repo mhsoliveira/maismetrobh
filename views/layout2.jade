@@ -1,3 +1,4 @@
+doctype html
 html
     head
         title MaismetroBH
@@ -25,21 +26,21 @@ html
           a#mainLogo(href="/")
             img.bannerLogo(src='../images/+metro.png')
           ul(class="list-inline", style='float: right; margin-top:32px; margin-right:15px; width:400px')
-            li.ico.col-sm-3
+            li.ico.col-xs-3
               a(href="/", style="color: rgb(255, 255, 255); float: right") Início
-            li.ico.col-sm-3
+            li.ico.col-xs-3
               a(href="/projeto", style="color: rgb(255, 255, 255); float: right") Projeto
-            li.ico.col-sm-3
+            li.ico.col-xs-3
               a(href="/contato", style="color: rgb(255, 255, 255); float: right") Contato
             if (!user)
-              li.ico.col-sm-3
+              li.ico.col-xs-3
                 a(href="/login", style="color: rgb(255, 255, 255); float: right") Login
             if (user)
-              li.icofin.col-sm-3(style='padding-right:0px')
-                div.col-sm-9(style='padding-right:0px; padding-left:0px')
-                  a.col-sm-12(href="/ideasfind/"+'#{user.username}', style="color: rgb(255, 255, 255); font-size:8px; text-align:right; padding-right:5px; padding-left:5px") Configurações
-                  a.col-sm-12(href="/logout", style="color: rgb(255, 255, 255); font-size:8px; text-align:right; padding-right:5px; padding-left:5px") Logout
-                div.col-sm-3(style='padding-right:0px; padding-left:0px; padding-top:1px')
+              li.icofin.col-xs-3(style='padding-right:0px')
+                div.col-xs-9(style='padding-right:0px; padding-left:0px')
+                  a.col-xs-12(href="/ideasfind/"+'#{user.username}', style="color: rgb(255, 255, 255); font-size:8px; text-align:right; padding-right:5px; padding-left:5px") Configurações
+                  a.col-xs-12(href="/logout", style="color: rgb(255, 255, 255); font-size:8px; text-align:right; padding-right:5px; padding-left:5px") Logout
+                div.col-xs-3(style='padding-right:0px; padding-left:0px; padding-top:1px')
                   img(src='#{user.picture}', style="width:20px;height:20px;border-radius:1px; border-radius:100%")
 
     block content

@@ -26,30 +26,7 @@ block content
 					div.h2(style='margin-bottom:2px') Confirme Senha
 					input#inputConfirmPass(type='password', class="register")
 				button#register(class='btn login') Criar Conta
-	footer(class="footer")
-		div.container
-			div.col-md-4
-				ul.ulmapasite Mapa do site
-					li.liredux
-						a.mapasite(href="/") Início
-					li.liredux
-						a.mapasite(href="/addidea/") Novo Trajeto
-					li.liredux
-						a.mapasite(href="#debate") Debate
-					li.liredux
-						a.mapasite(href="/contato/") Contato
-					li.liredux
-						a.mapasite(href="/projeto/") Projeto
-			div.col-md-8(style='padding-right:10px;')
-				div.col-md-12(style='padding-right:0px; margin-top:10px')
-					img.siganos(src='../images/footer_03.png', style='float:right')
-				ul(class="list-inline", style='float: right; margin-top:10px')
-					a(href="https://www.facebook.com")
-						img.redes(src='../images/footer_05.png')
-					a(href="https://www.twitter.com")
-						img.redes(src='../images/footer_07.png')
-					a(href="https://plus.google.com")
-						img.redes(src='../images/footer_06.png')
+	include ./footer.jade
 
 
 	script(src='/javascripts/login.js')

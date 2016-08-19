@@ -25,7 +25,7 @@ block content
               texto  Qual linha de metro atenderia todos esses pontos?
             div.textpop
               textored 3 _
-              texto  Desenhe no mapa as estações para a sua linha.
+              texto  Clique no mapa para desenhar as estações da sua linha.
           div#secondPop(class='bubble')
             div.textpop
               texto PARA COMEÇAR
@@ -51,30 +51,7 @@ block content
             button#btnAddIdea(class='btn login col-sm-5') Nova Proposta
             img.loading(src='../images/poi.gif', alt="Só um minutinho...")
 
-    footer(class="footer")
-      div.container
-        div.col-sm-4
-          ul.ulmapasite Mapa do site
-            li.liredux
-              a.mapasite(href="/") Início
-            li.liredux
-              a.mapasite(href="/addidea/") Novo Trajeto
-            li.liredux
-              a.mapasite(href="#debate") Debate
-            li.liredux
-              a.mapasite(href="/contato/") Contato
-            li.liredux
-              a.mapasite(href="/projeto/") Projeto
-        div.col-sm-8(style='padding-right:10px;')
-          div.col-sm-12(style='padding-right:0px; margin-top:10px')
-            img.siganos(src='../images/footer_03.png', style='float:right')
-          ul(class="list-inline", style='float: right; margin-top:10px')
-            a(href="https://www.facebook.com")
-              img.redes(src='../images/footer_05.png')
-            a(href="https://www.twitter.com")
-              img.redes(src='../images/footer_07.png')
-            a(href="https://plus.google.com")
-              img.redes(src='../images/footer_06.png')
+    include ./footer.jade
 
     script(src='../javascripts/leafletdraw/leaflet.draw.js')
     script(src='../bower_components/bPopup/jquery.bpopup.min.js')
