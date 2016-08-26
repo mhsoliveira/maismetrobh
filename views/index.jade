@@ -1,8 +1,15 @@
 extends layout2
 
 block content
+
+  meta(property="og:title", content="MaismetroBH")
+  meta(property="og:type", content="website")
+  meta(property="og:url", content="http://www.maismetrobh.com.br")
+  meta(property="og:image", content="http://www.maismetrobh.com.br/images/Logoface.png")
+  meta(name="description", content="+METRO é uma plataforma colaborativa de apoio às decisões sobre o transporte público em Belo Horizonte. Inspirado na Linie Funf, desenvolvida na cidade de Hamburg, o +Metro propõe criar um espaço para a formação de um debate público amplo, informativo e empoderador.")
+
   body
-    div.container(style='padding-top:60px')
+    div#logoP.container(style='padding-top:60px')
       div(class="col-xs-12 col-md-5", style='padding: 0px;')
         img.logo(src='../images/Logo.jpg')
         if (user)
@@ -29,20 +36,20 @@ block content
             div(class="col-xs-3", style="padding: 0px;")
               a(class='b', href="/addidea/")
                 img.thumbs(src='../images/Thumbs/desenha.jpg')
-                p.thumbsTxt Propõe seu trajeto
+                p.thumbsTxt Proponha seu trajeto
           if (!user)
             div(class="col-xs-3", style="padding: 0px;")
               a(class='b', href="/login/")
                 img.thumbs(src='../images/Thumbs/desenha.jpg')
-                p.thumbsTxt Propõe seu trajeto
+                p.thumbsTxt Proponha seu trajeto
           div(class="col-xs-3", style="padding: 0px;")
-            a(class='b', href="#debate")
+            a(class='b', href="#test-list")
               img.thumbs(src='../images/Thumbs/debate.jpg')
               p.thumbsTxt Entre no debate
           div(class="col-xs-3", style="padding: 0px;")
-            a#media(class='b', href="#media")
+            a#media(class='b', href="#mainLogo")
               img.thumbs(src='../images/Thumbs/redes-sociais.jpg')
-              p.thumbsTxt Partilhe nas redes
+              p.thumbsTxt Compartilhe nas redes
             div.social.col-xs-12
               ul
                 li.col-xs-4
@@ -60,12 +67,12 @@ block content
       //icones de navegacao
 
       div.container
-        a.col-xs-12(name="debate", style='padding-top:140px')
+        a.col-xs-12(style='padding-top:140px')
         div(id="test-list", class="col-xs-12", style='padding:0px;')
           h2(class="col-xs-12", style='margin: auto; padding-left:5px; padding-right:15px; font-size:36px')
             texto Trajetos
             textored  +
-            texto pertos de você
+            texto  perto de você
           div(class="col-xs-12", style='font-size:40px; padding-left:5px; padding-right:39px; margin-top:10px;')
             p.h2(style='margin-top:10px;') Pesquisas Tags
             input#inputFilter(type='text', class='search incomment col-xs-12 col-md-6', placeholder='#Procurar', style='font-size:13px; padding:2px; margin-top:10px;')

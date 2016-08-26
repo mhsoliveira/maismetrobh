@@ -40,7 +40,7 @@ $(document).ready(function() {
         $(id).rateYo({
             rating: rate,
             starWidth: "16px",
-            normalFill: "transparent",
+            normalFill: "#e8f8fb",
             ratedFill: "#EC6655",
             readOnly: true
           });
@@ -48,14 +48,10 @@ $(document).ready(function() {
     };
 
     function plotMap(item) {
-        if (item.coordinates.length%2===0){var idx=item.coordinates.length/2-1;}
-        else{var idx=(item.coordinates.length-1)/2;}
-        var map = L.map(document.getElementById(item._id)).setView([item.coordinates[idx][1],item.coordinates[idx][0]], 11);
+        var map = L.map(document.getElementById(item._id)).fitBounds(L.geoJson(item).getBounds());
         L.tileLayer('https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'})
         .addTo(map);
-
-
         addLayer(item);
         addPoints(item);
 

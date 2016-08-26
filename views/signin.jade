@@ -3,29 +3,31 @@ extends layout2
 block content
 	body
 		div.container(style='padding-top:20px')
-			div(class='col-md-5')
-				h1(class='col-md-12', style='font-size:28px !important') Entre com a sua conta de Facebook
-				a(class='col-md-12', href="/login/facebook")
-					img(src='../images/FACEBOOK.JPG', style='margin-top:20px; width:100%; margin-left:auto; margin-right:auto; margin-bottom:20px')
-				div(class='col-md-12', style='font-size:21px; text-align:center; font-style:italic') ou
-				#log(class='col-md-12')
-					div.h2(style='margin-bottom:2px') Nome
-					input#logEmail(type='text', class="register")
-					div.h2(style='margin-bottom:2px') Senha
-					input#logPass(type='password', class="register")
-					button#login(class='btn login') Login
-			div(class='col-md-2')
-			h1(class="col-md-5", style='font-size:21px; float: right; margin-top:25px; font-size:28px !important') Crie uma Conta
-				#reg(style='font-size:21px; margin-top:40px')
-					div.h2(style='margin-bottom:2px') Nome
-					input#inputNewName(type='text', class="register")
-					div.h2(style='margin-bottom:2px') Email
-					input#inputNewEmail(type='text', class="register")
-					div.h2(style='margin-bottom:2px') Senha
-					input#inputNewPass(type='password', class="register")
-					div.h2(style='margin-bottom:2px') Confirme Senha
-					input#inputConfirmPass(type='password', class="register")
-				button#register(class='btn login') Criar Conta
+			div.row
+				div(class='col-xs-12 col-md-5', style='padding-left:0px; padding-right:0px')
+					h1(class='col-xs-12', style='font-size:28px !important') Entre com a sua conta de Facebook
+					a(class='col-xs-12', href="/login/facebook")
+						img(src='../images/FACEBOOK.JPG', style='margin-top:20px; width:100%; margin-left:auto; margin-right:auto; margin-bottom:20px')
+					div(class='col-xs-12', style='font-size:21px; text-align:center; font-style:italic') ou
+					#log(class='col-xs-12')
+						div.h2(style='margin-bottom:2px') Nome
+						input#logEmail(type='text', class="register")
+						div.h2(style='margin-bottom:2px') Senha
+						input#logPass(type='password', class="register")
+						button#login(class='btn login') Login
+				div(class='col-xs-12 col-md-5', style='float:right; padding-right:0px')
+					h1(class="col-xs-12", style='font-size:21px; float: right; margin-top:25px; padding-left:0px; font-size:28px !important') Crie uma Conta
+					#reg.col-xs-12(style='font-size:21px; padding-left:0px; margin-top:32px')
+						div.h2(style='margin-bottom:2px') Nome
+						input#inputNewName(type='text', class="register")
+						div.h2(style='margin-bottom:2px') Email
+						input#inputNewEmail(type='text', class="register")
+						div.h2(style='margin-bottom:2px') Senha
+						input#inputNewPass(type='password', class="register")
+						div.h2(style='margin-bottom:2px') Confirme Senha
+						input#inputConfirmPass(type='password', class="register")
+					div.col-xs-12
+						button#register(class='btn login') Criar Conta
 	include ./footer.jade
 
 
