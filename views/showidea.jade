@@ -1,12 +1,11 @@
 extends layout2
-meta(property="og:title", content="MaismetroBH")
-meta(property="og:type", content="website")
-meta(property="og:url", content="http://www.maismetrobh.com.br/ideas/"+'#{ideaId}')
-meta(property="og:image", content="http://www.maismetrobh.com.br/images/Logoface.png")
-meta(name="description", content="#{userProp.username}"+" adicionou uma proposta para a construção de uma nova linha de metro para Belo Horizonte. Veja aqui por onde passa a linha dela! Avalie, Comente e Compartilhe!")
-
 
 block content
+    meta(property="og:title", content="MaismetroBH")
+    meta(property="og:type", content="website")
+    meta(property="og:url", content="http://www.maismetrobh.com.br/ideas/"+'#{ideaId}')
+    meta(property="og:image", content="http://www.maismetrobh.com.br/images/Logo.jpg")
+    meta(name="description", content="#{userProp.username}"+" adicionou uma proposta para a construção de uma nova linha de metro para Belo Horizonte. Veja aqui por onde passa essa linha! Avalie, Comente e Compartilhe!")
     body
       if (user)
         script(type='text/javascript').
