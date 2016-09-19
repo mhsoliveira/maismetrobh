@@ -14,25 +14,22 @@ $(document).ready(function() {
 // Add User
 function reg(event) {
     event.preventDefault();
-
     // Super basic validation - increase errorCount variable if any fields are blank
     var errorCount = 0;
     $('#reg input').each(function(index, val) {
         if($(this).val() === '') { errorCount++; }
     });
-
-    if($('input#inputNewPass').val()!=$('input#inputConfirmPass').val()) { errorCount++; };
-
+    if($('input[name=avatar]:checked').val() === undefined) { errorCount++; }
     // Check and make sure errorCount's still at zero
     if(errorCount === 0) {
 
         // If it is, compile all user info into one object
         var userReg = {
+            picture: $('input[name=avatar]:checked').val(),
             username: $('input#inputNewName').val(),
             email: $('input#inputNewEmail').val(),
             password: $('input#inputNewPass').val(),
           };
-
         // Use AJAX to post the object to our addProp service
         $.ajax({
             type: 'POST',

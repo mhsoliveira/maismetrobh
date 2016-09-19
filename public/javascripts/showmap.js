@@ -25,8 +25,8 @@ function addLayer(layer) {
 
   var MyCustomMarker = new L.Icon({
           shadowUrl: null,
-          iconAnchor: new L.Point(23, 18),
-          iconSize: new L.Point(26, 24),
+          iconAnchor: new L.Point(11, 12),
+          iconSize: new L.Point(20, 20),
           iconUrl: '../images/Metro_Logo.png'
   });
 

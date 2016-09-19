@@ -6,8 +6,8 @@ $(document).ready(function() {
 
     var MyCustomMarker = new L.Icon({
             shadowUrl: null,
-            iconAnchor: new L.Point(23, 18),
-            iconSize: new L.Point(26, 24),
+            iconAnchor: new L.Point(11, 12),
+            iconSize: new L.Point(20, 20),
             iconUrl: '../images/Metro_Logo.png'
     });
 
@@ -50,7 +50,7 @@ $(document).ready(function() {
     function plotMap(item) {
         var map = L.map(document.getElementById(item._id)).fitBounds(L.geoJson(item).getBounds());
         L.tileLayer('https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'})
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'})
         .addTo(map);
         addLayer(item);
         addPoints(item);

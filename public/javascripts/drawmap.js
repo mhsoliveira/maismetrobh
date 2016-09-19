@@ -80,6 +80,14 @@ $(document).ready(function() {
         $(".bubble").hide();
       });
 
+      map.on("draw:deleted", function (e) {
+        drawControl.setDrawingOptions({
+        polyline:true
+        });
+        map.removeControl(drawControl);
+        map.addControl(drawControl);
+      });
+
       map.on('draw:created', function (e) {
           var type = e.layerType,
               layer = e.layer,
@@ -94,5 +102,10 @@ $(document).ready(function() {
           newDes.type = type;
           newDes.coordinates = arr;
           drawnItems.addLayer(layer);
+          drawControl.setDrawingOptions({
+            polyline:false
+          });
+          map.removeControl(drawControl);
+          map.addControl(drawControl);
       });
 });

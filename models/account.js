@@ -7,7 +7,7 @@ var Account = new Schema({
     password: String,
     access_token: String,
     email: String,
-    picture: {type: String, default: '../images/icognito.png'}
+    picture: String
 });
 
 Account.plugin(passportLocalMongoose);

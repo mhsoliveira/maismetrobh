@@ -24,8 +24,14 @@ block content
 						input#inputNewEmail(type='text', class="register")
 						div.h2(style='margin-bottom:2px') Senha
 						input#inputNewPass(type='password', class="register")
-						div.h2(style='margin-bottom:2px') Confirme Senha
-						input#inputConfirmPass(type='password', class="register")
+						#figure.h2 Selecione seu avatar
+						form
+							div.col-xs-6
+								input(type="radio", name="avatar", value="../images/sebastipao.png")
+								img.avatar(src='../images/sebastipao.png')
+							div.col-xs-6
+								input(type="radio", name="avatar", value="../images/jabutissara.png")
+								img.avatar(src='../images/jabutissara.png')
 					div.col-xs-12
 						button#register(class='btn login') Criar Conta
 	include ./footer.jade
