@@ -15,6 +15,7 @@ block content
 						div.h2(style='margin-bottom:2px') Senha
 						input#logPass(type='password', class="register")
 						button#login(class='btn login') Login
+						img#gol.loading(src='../images/poi.gif', alt="Só um minutinho...")
 				div(class='col-xs-12 col-md-5', style='float:right; padding-right:0px')
 					h1(class="col-xs-12", style='font-size:21px; float: right; margin-top:25px; padding-left:0px; font-size:28px !important') Crie uma Conta
 					#reg.col-xs-12(style='font-size:21px; padding-left:0px; margin-top:32px')
@@ -25,15 +26,20 @@ block content
 						div.h2(style='margin-bottom:2px') Senha
 						input#inputNewPass(type='password', class="register")
 						#figure.h2 Selecione seu avatar
-						form
+						form(style='text-align: center')
 							div.col-xs-6
-								input(type="radio", name="avatar", value="../images/sebastipao.png")
-								img.avatar(src='../images/sebastipao.png')
+								div.col-xs-12(style='padding:0')
+									img.avatarlog(src='../images/sebastipao avatar.png')
+								div.col-xs-12(style='padding:0')
+									input(type="radio", name="avatar", value="../images/sebastipao.png")
 							div.col-xs-6
-								input(type="radio", name="avatar", value="../images/jabutissara.png")
-								img.avatar(src='../images/jabutissara.png')
+								div.col-xs-12(style='padding:0')
+									img.avatarlog(src='../images/jabutissara avatar.png')
+								div.col-xs-12(style='padding:0')
+									input(type="radio", name="avatar", value="../images/Jabutissara.png")
 					div.col-xs-12
 						button#register(class='btn login') Criar Conta
+						img#ger.loading(src='../images/poi.gif', alt="Só um minutinho...")
 	include ./footer.jade
 
 

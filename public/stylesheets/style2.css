@@ -702,6 +702,10 @@ p{
   border-radius: 100%
 }
 
+.avatarlog{
+  height: 140px;
+  width: 140px;}
+
 .avatarcom{
   height: 40px;
   width: 40px;

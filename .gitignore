@@ -3,4 +3,5 @@ data
 npm-debug.log
 Layout.docx
 "sendgrid.env"
-.env 
+.env
+public/javascripts/chave.js

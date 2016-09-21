@@ -14,6 +14,8 @@ $(document).ready(function() {
 // Add User
 function reg(event) {
     event.preventDefault();
+    $('#ger.loading').show();
+    $('button#register').text('Só um min...');
     // Super basic validation - increase errorCount variable if any fields are blank
     var errorCount = 0;
     $('#reg input').each(function(index, val) {
@@ -38,6 +40,8 @@ function reg(event) {
             dataType: 'JSON',
             statusCode: {
               500: function() {
+                $('#ger.loading').hide();
+                $('button#register').text('Criar Conta');
                 alert("Nome de usuário já cadastrado");
               }}
             }).done(function(response) {
@@ -48,6 +52,8 @@ function reg(event) {
             window.location.href = "/";
         }
         else {
+          $('#ger.loading').hide();
+          $('button#register').text('Criar Conta');
 
             // If something goes wrong, alert the error message that our service returned
             alert(err);
@@ -56,6 +62,8 @@ function reg(event) {
     }
     else {
         // If errorCount is more than 0, error out
+        $('#ger.loading').hide();
+        $('button#register').text('Criar Conta');
         alert('Verifique se todos os campos estao preenchidos corretamente');
         return false;
     }
@@ -64,6 +72,8 @@ function reg(event) {
 // Add User
 function log(event) {
     event.preventDefault();
+    $('button#login').text('Só um min...');
+    $('#gol.loading').show();
 
     // Super basic validation - increase errorCount variable if any fields are blank
     var errorCount = 0;
@@ -88,6 +98,8 @@ function log(event) {
             dataType: 'JSON',
             statusCode: {
               401: function() {
+                $('button#login').text('Login');
+                $('#gol.loading').hide();
                 alert("Nome ou senha inválidos");
               }}
         }).done(function(response) {
@@ -99,6 +111,8 @@ function log(event) {
             window.location.href = "/";
         }
         else {
+          $('button#login').text('Login');
+          $('#gol.loading').hide();
 
             // If something goes wrong, alert the error message that our service returned
             alert(err);
@@ -107,7 +121,10 @@ function log(event) {
     }
     else {
         // If errorCount is more than 0, error out
+        $('button#login').text('Login');
+        $('#gol.loading').hide();
         alert('Verifique se todos os campos estao preenchidos');
         return false;
+
     }
 };

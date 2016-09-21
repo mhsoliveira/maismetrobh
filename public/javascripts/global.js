@@ -3,7 +3,7 @@ var userPic=String;
 
 window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1137108536365807',
+      appId      : '1714538908820335',
       xfbml      : true,
       version    : 'v2.7'
     });
@@ -110,13 +110,15 @@ function addIdea(event) {
 
             // Check for successful (blank) response
             if (response.message === 'You have got an idea!') {
-              FB.ui({
-                method: 'feed',
-                link: "www.maismetrobh.com.br/ideas/"+response.data._id,
-                caption: 'An example caption',
-              });
               $('#addProp input').val('');
               window.location.href = "/ideas/"+response.data._id;
+              var page_id = '58581800492432';
+              FB.api('/' + page_id + '/feed',
+              'post',
+              {message: '[PROPOSTA]', access_token: pageKey }
+              ,function(response) {
+                console.log(response);
+                    });
             }
             else {
 
