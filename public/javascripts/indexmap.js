@@ -18,7 +18,7 @@ $(document).ready(function() {
       };
     }).then(function() {
         var monkeyList = new List("test-list", {
-          valueNames: ['refs1','refs2','refs3'],
+          valueNames: ['refs1','refs2','refs3','uname'],
           page: 2,
           plugins: [ ListPagination({}) ]
         });

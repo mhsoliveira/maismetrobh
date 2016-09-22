@@ -1,11 +1,17 @@
 extends layout2
 
 block content
-    meta(property="og:title", content="MaismetroBH")
-    meta(property="og:type", content="website")
-    meta(property="og:url", content="http://www.maismetrobh.com.br/ideas/"+'#{ideaId}')
-    meta(property="og:image", content="http://www.maismetrobh.com.br/images/Logo.jpg")
-    meta(name="description", content="#{userProp.username}"+" adicionou uma proposta para a construção de uma nova linha de metro para Belo Horizonte. Veja aqui por onde passa essa linha! Avalie, Comente e Compartilhe!")
+    head
+      meta(property="og:title", content= "#{userProp.username}"+" fez uma proposta para o metrô de BH.")
+      meta(property="og:site_name", content= "Mais Metro BH")
+      meta(property="fb:app_id", content= "1714538908820335")
+      meta(property="og:type", content="website")
+      meta(property="og:url", content="http://www.maismetrobh.com.br/ideas/"+'#{ideaId}')
+      meta(property="og:image", content="http://infinite-peak-90762.herokuapp.com/images/share.jpeg")
+      meta(property="og:image:type", content="image/jpeg")
+      meta(property="og:image:width", content="800")
+      meta(property="og:image:height", content="421")
+      meta(name="description", content= "Veja aqui por onde passa essa linha! Faça também a sua proposta. Avalie, Comente e Compartilhe!")
     body
       if (user)
         script(type='text/javascript').
@@ -80,7 +86,12 @@ block content
               img(src='../images/1stars.png', style='display:inline; height:20px; padding-bottom:2px')
               rateList.tot1
               rateList.per1
-
+          div.col-md-12(style='padding-top:15px; padding-right: 0px;')
+            div.col-md-5
+              a( href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" data-hashtags="maismetroBH") Tweetar
+              script(type='text/javascript').
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+            div.col-md-7.fb-share-button(data-layout="button")
         div(class="col-md-9", style='padding-right:0px')
           div(class="col-md-12 description")
             div(class="col-md-1", style='padding-right:0px;')

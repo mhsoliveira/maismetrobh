@@ -26,7 +26,8 @@ block content
                   tr
                     td
                       img(src='../images/Metro_Logo.png', style='width:25px')
-                    td #{proposta.refs}
+                    td
+                      a(href='/ideas/'+'#{proposta._id}') #{proposta.refs}
                     td #{proposta.date}
                     td #{proposta.comments.length}
                     td #{proposta.rating.length}

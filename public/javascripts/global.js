@@ -112,13 +112,13 @@ function addIdea(event) {
             if (response.message === 'You have got an idea!') {
               $('#addProp input').val('');
               window.location.href = "/ideas/"+response.data._id;
-              var page_id = '58581800492432';
-              FB.api('/' + page_id + '/feed',
-              'post',
-              {message: '[PROPOSTA]', access_token: pageKey }
-              ,function(response) {
-                console.log(response);
-                    });
+              var message = {link:'http://www.maismetrobh.com.br/ideas/'+response.data._id};
+              $.ajax({
+                  type: 'POST',
+                  data: message,
+                  url: '/fbpost',
+                  dataType: 'JSON'
+              });
             }
             else {
 

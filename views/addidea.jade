@@ -2,54 +2,61 @@ extends layout2
 
 block content
     body
-      div.container
-        if(user)
-          script(type='text/javascript').
-              var userId = '#{user.username}';
-              var user = '#{user._id}';
-        div(class='col-sm-12', style='padding-left: 0px; padding-right: 0px')
-          h1(style='padding-left: 0px; padding-right: 0px') Nova Proposta
-        div(class='col-sm-8', style='padding-left: 0px; padding-right: 0px')
-          #map(class='showmap', style='height:500px')
-          div#firstPop
-            a(class='b-close') entendi
-            div.textpop
-              texto O SEU TRAJETO DE METRO
-            div.textpop
-              textored ALGUMAS DICAS
-            div.textpop
-              textored 1 _
-              texto  Pense no seu dia-a-dia e quais são os pontos da cidade mais importantes para a sua rotina.
-            div.textpop
-              textored 2 _
-              texto  Qual linha de metro atenderia todos esses pontos?
-            div.textpop
-              textored 3 _
-              texto  Clique no mapa para desenhar as estações da sua linha.
-          div#secondPop(class='bubble')
-            div.textpop
-              texto PARA COMEÇAR
+      if(user)
+        div.container
+          if(user)
+            script(type='text/javascript').
+                var userId = '#{user.username}';
+                var user = '#{user._id}';
+          div(class='col-sm-12', style='padding-left: 0px; padding-right: 0px')
+            h1(style='padding-left: 0px; padding-right: 0px') Nova Proposta
+          div(class='col-sm-8', style='padding-left: 0px; padding-right: 0px')
+            #map(class='showmap', style='height:500px')
+            div#firstPop
+              a(class='b-close') entendi
               div.textpop
-              texto A DESENHAR
-              textored  A SUA LINHA
-            div.textpop
-              texto  SELECIONE ESSA FERRAMENTA
-        div(id='addProp', class='col-sm-4', style='padding-left: 0px; padding-right: 0px')
-          div(class='col-sm-12')
-            .h2(style='margin-top: 0px') Onde começa a sua linha?
-            input#inputIdeaRef1(type='text', placeholder='ex. #aeroportoCarlosPrates', class="incomment",  style='width:100%')
-          div(class='col-sm-12')
-            .h2 Aponte uma referência no meio do seu trajeto
-            input#inputIdeaRef2(type='text', placeholder='ex. #minerão, #pcaSete, #pqMunicipal' , class="incomment",  style='width:100%')
-          div(class='col-sm-12')
-            .h2 Onde termina a sua linha?
-            input#inputIdeaRef3(type='text', placeholder='ex. #UFMG, #taquaril, #hospJuliaKubitscheck', class="incomment",  style='width:100%')
-          div(class='col-sm-12')
-            .h2 Descreva como essa linha atenderia suas necessidades
-            textarea(id="inputIdeaDesc", cols="40", rows="7", placeholder='ex. Usaria muito, porque cria um melhor acesso ao hospital, universidade, meu local de trabalho, etc...', class="incomment",  style='width:100%')
-          div(class='col-sm-12')
-            button#btnAddIdea(class='btn login col-sm-5') Nova Proposta
-            img.loading(src='../images/poi.gif', alt="Só um minutinho...")
+                texto O SEU TRAJETO DE METRO
+              div.textpop
+                textored ALGUMAS DICAS
+              div.textpop
+                textored 1 _
+                texto  Pense no seu dia-a-dia e quais são os pontos da cidade mais importantes para a sua rotina.
+              div.textpop
+                textored 2 _
+                texto  Qual linha de metro atenderia todos esses pontos?
+              div.textpop
+                textored 3 _
+                texto  Clique no mapa para desenhar as estações da sua linha.
+            div#secondPop(class='bubble')
+              div.textpop
+                texto PARA COMEÇAR
+                div.textpop
+                texto A DESENHAR
+                textored  A SUA LINHA
+              div.textpop
+                texto  SELECIONE ESSA FERRAMENTA
+          div(id='addProp', class='col-sm-4', style='padding-left: 0px; padding-right: 0px')
+            div(class='col-sm-12')
+              .h2(style='margin-top: 0px') Onde começa a sua linha?
+              input#inputIdeaRef1(type='text', placeholder='ex. #aeroportoCarlosPrates', class="incomment",  style='width:100%')
+            div(class='col-sm-12')
+              .h2 Aponte uma referência no meio do seu trajeto
+              input#inputIdeaRef2(type='text', placeholder='ex. #minerão, #pcaSete, #pqMunicipal' , class="incomment",  style='width:100%')
+            div(class='col-sm-12')
+              .h2 Onde termina a sua linha?
+              input#inputIdeaRef3(type='text', placeholder='ex. #UFMG, #taquaril, #hospJuliaKubitscheck', class="incomment",  style='width:100%')
+            div(class='col-sm-12')
+              .h2 Descreva como essa linha atenderia suas necessidades
+              textarea(id="inputIdeaDesc", cols="40", rows="7", placeholder='ex. Usaria muito, porque cria um melhor acesso ao hospital, universidade, meu local de trabalho, etc...', class="incomment",  style='width:100%')
+            div(class='col-sm-12')
+              button#btnAddIdea(class='btn login col-sm-5') Salvar Proposta
+              img.loading(src='../images/poi.gif', alt="Só um minutinho...")
+    if(!user)
+      div.container
+        img.logo(src='../images/Logo.jpg')
+        h1(style='text-align: center;') Registre-se
+          a(href='/login')  aqui
+          texto  para fazer a sua proposta
 
     include ./footer.jade
 
