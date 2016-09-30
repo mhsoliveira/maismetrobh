@@ -1,22 +1,6 @@
 // Userlist data array for filling in info box
 var userPic=String;
 
-window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1714538908820335',
-      xfbml      : true,
-      version    : 'v2.7'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
 // DOM Ready =============================================================
 $(document).ready(function() {
     $('#firstPop').bPopup({
@@ -112,13 +96,6 @@ function addIdea(event) {
             if (response.message === 'You have got an idea!') {
               $('#addProp input').val('');
               window.location.href = "/ideas/"+response.data._id;
-              var message = {link:'http://www.maismetrobh.com.br/ideas/'+response.data._id};
-              $.ajax({
-                  type: 'POST',
-                  data: message,
-                  url: '/fbpost',
-                  dataType: 'JSON'
-              });
             }
             else {
 

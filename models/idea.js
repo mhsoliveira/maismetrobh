@@ -10,7 +10,7 @@ var IdeaSchema = new Schema({
     judgers:[String],
     desc: {type: [String], default:''},
     refs: {type: [String], default:''},
-    comments: [{ body: String, user: String, photo: String }],
+    comments: [{ body: String, user: String, photo: String, uid: String }],
     date: String,
     user: {username: String, picture: String }
 },{ collection: 'layercollection'});

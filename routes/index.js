@@ -2,8 +2,6 @@ var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
 var router = express.Router();
-var fbConfig = require('../fb.js');
-var FB = require('fb');
 
 
 
@@ -16,6 +14,12 @@ var Idea = require('../models/idea.js')
 router.get('/', function(req, res, next) {
   Idea.find({ type: "LineString" },{}, function (err, docs) {
           res.render('index',  {ideas: docs, user : req.user} );
+      });
+});
+
+router.get('/debate', function(req, res, next) {
+  Idea.find({ type: "LineString" },{}, function (err, docs) {
+          res.render('debate',  {ideas: docs, user : req.user} );
       });
 });
 
@@ -218,23 +222,6 @@ router.get('/login/facebook/callback',
 	})
 );
 
-router.post('/fbpost', function(req, res) {
-  console.log('teste');
-  FB.setAccessToken(process.env.PAGE_KEY);
-  FB.options({
-    appId: fbConfig.appID,
-    appSecret: fbConfig.appSecret,
-    redirectUri: fbConfig.callbackUrl
-  });
-  console.log(FB.options);
-  FB.api('585818004924328/feed', 'post', { link: req.body.link }, function (res) {
-    if(!res || res.error) {
-      console.log(!res ? 'error occurred' : res.error);
-      return;
-    }
-  console.log('Post Id: ' + res.id);
-  });
-});
 
 
 module.exports = router;

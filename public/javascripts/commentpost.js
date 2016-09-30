@@ -89,7 +89,7 @@ function addComment(event) {
     if(errorCount === 0) {
 
         // If it is, compile all user info into one object
-        var newcomment = {ncomment: { body: $('input#inputNewComment').val(), user: userId, photo: userPhoto }};
+        var newcomment = {ncomment: { body: $('input#inputNewComment').val(), user: userId, photo: userPhoto, uid:user }};
         // Use AJAX to post the object to our adduser service
         $.ajax({
             type: 'PUT',

@@ -452,6 +452,13 @@ textored{
   font-weight: bold;
 }
 
+.btn-warning{
+  background-color: #ffd746 !important;
+  font-size: 20px !important;
+  float: right!important;
+  margin-right: 10px !important;
+}
+
 textoyellow{
   color: #ffd746;
   font-weight: bold;
@@ -495,10 +502,8 @@ textoblue{
 
 .draw{
   background-color: #1ab9d8 !important;
-  display: block;
-  padding: 2px;
   text-align: center;
-  margin-right: 10px;
+  width: 100%;
 }
 
 li{
@@ -519,50 +524,16 @@ li{
   float: left;
   padding: 4px !important;
   margin-right: 4px;
-  font-size: 16px;
   background-color: #ec6655;
   color:#fff;
   font-weight: bold;
   list-style-type: none;
 }
 
-.refs1{
-  border-radius: 2px;
-  text-align: center !important;
-  float: left;
-  padding: 4px !important;
-  margin-right: 4px;
-  font-size: 16px;
-  background-color: #ec6655;
-  color:#fff;
-  font-weight: bold;
-  list-style-type: none;
-}
-
-.refs2{
-  border-radius: 2px;
-  text-align: center !important;
-  float: left;
-  padding: 4px !important;
-  margin-right: 4px;
-  font-size: 16px;
-  background-color: #ec6655;
-  color:#fff;
-  font-weight: bold;
-  list-style-type: none;
-}
-
-.refs3{
-  border-radius: 2px;
-  text-align: center !important;
-  float: left;
-  padding: 4px !important;
-  margin-right: 4px;
-  font-size: 16px;
-  background-color: #ec6655;
-  color:#fff;
-  font-weight: bold;
-  list-style-type: none;
+.label-danger{
+  background-color: #ec6655 !important;
+  z-index: 1 !important;
+  margin: 1px !important
 }
 
 .description{
@@ -614,6 +585,18 @@ li{
   border-width: 1px;
 }
 
+.search{
+  width: 75%;
+  text-align: center;
+  margin: auto;
+  padding: 3px;
+  background-color: #fff;
+  border: solid;
+  border-radius: 5px;
+  border-color: #EC6655;
+  border-width: 1px;
+}
+
 .login{
   float: right;
   margin-top: 10px;
@@ -622,6 +605,15 @@ li{
   font-weight: bold;
   font-size: 13px;
   border-radius: 2px;
+}
+
+.debate{
+  background-color: #ffd746;
+  font-weight: bold;
+  font-size: 24px;
+  border-radius: 2px;
+  width: 35%;
+  margin: auto;
 }
 
 .btcomment{
@@ -700,6 +692,45 @@ p{
   width: 62px;
   background-color: #ffd746;
   border-radius: 100%
+}
+
+.refs1{
+  border-radius: 2px;
+  text-align: center !important;
+  float: left;
+  padding: 4px !important;
+  margin-right: 4px;
+  font-size: 16px;
+  background-color: #ec6655;
+  color:#fff;
+  font-weight: bold;
+  list-style-type: none;
+}
+
+.refs2{
+  border-radius: 2px;
+  text-align: center !important;
+  float: left;
+  padding: 4px !important;
+  margin-right: 4px;
+  font-size: 16px;
+  background-color: #ec6655;
+  color:#fff;
+  font-weight: bold;
+  list-style-type: none;
+}
+
+.refs3{
+  border-radius: 2px;
+  text-align: center !important;
+  float: left;
+  padding: 4px !important;
+  margin-right: 4px;
+  font-size: 16px;
+  background-color: #ec6655;
+  color:#fff;
+  font-weight: bold;
+  list-style-type: none;
 }
 
 .avatarlog{

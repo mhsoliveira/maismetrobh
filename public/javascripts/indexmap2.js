@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-  $("#media").click(function(){
-    $(".social").toggle();
-  });
-
     var MyCustomMarker = new L.Icon({
             shadowUrl: null,
             iconAnchor: new L.Point(11, 12),
@@ -16,12 +12,11 @@ $(document).ready(function() {
         plotMap(data[i])
         rate(data[i])
       };
-    }).then(
-      $('.list').bxSlider({
-        auto:true,
-        pager:false,
-      })
-    );
+    }).then(function() {
+        var monkeyList = new List("test-list", {
+          valueNames: ['refs1','refs2','refs3','uname']
+        });
+    });
 
     function rate(item) {
       var idrating = '#'+item._id+'m';

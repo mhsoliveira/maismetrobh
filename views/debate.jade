@@ -1,0 +1,57 @@
+extends layout2
+
+block content
+
+  Head
+    meta(property="og:title", content="MaismetroBH")
+    meta(property="og:type", content="website")
+    meta(property="og:url", content="http://www.maismetrobh.com.br")
+    meta(property="og:image", content="http://www.maismetrobh.com.br/images/Logoface.png")
+    meta(name="description", content="+METRO é uma plataforma colaborativa de apoio às decisões sobre o transporte público em Belo Horizonte. Inspirado na Linie Funf, desenvolvida na cidade de Hamburg, o +Metro propõe criar um espaço para a formação de um debate público amplo, informativo e empoderador.")
+
+  body
+    div.container
+      h2(style='font-size:36px')
+        textored  +
+        texto  Debate
+      div(id="test-list")
+        input#inputFilter(type='text', class='search col-xs-12 col-md-6 col-md-offset-3', placeholder='Pesquise por #Tags ou Pessoas', style='font-size:18px; margin-top:20px; margin-bottom:30px;')
+        div(id='refs', class='list row')
+
+          //icone para cada uma das ideias
+
+          - each Idea in ideas
+            div.thumbnail(id='node', class='col-md-4 col-sm-6 col-xs-12')
+              div(style='position:absolute;z-index:1')
+                h5
+                  span.label.label-danger(class='refs1')= Idea.refs[0]
+                h5
+                  span.label.label-danger(class='refs2')= Idea.refs[1]
+                h5
+                  span.label.label-danger(class='refs3')= Idea.refs[2]
+              a(href="/ideas/"+Idea._id)
+                div.draw(id='#{Idea.id}')(style='height: 250px;')
+                div.row(style='margin-top:5px;')
+                  img.col-xs-3(src=Idea.user.picture, style='border-radius: 100%;')
+                  div(class='col-xs-9', style='padding-left:0px;')
+                    p.txicon(class='col-xs-12 uname', style='padding-left: 6px')= Idea.user.username
+                    div(id='#{Idea.id}'+'m', class='col-xs-10')
+                    p.txicon(class='col-xs-2', style='padding-left: 6px')= "("+Idea.rating.length+")"
+                    p.txicon(class='col-xs-12', style='padding-left: 6px')= "Comentários "+Idea.comments.length
+
+          // pagination
+
+
+
+          //JQUERY
+            //MAPS e RATE
+
+        script(src='../javascripts/leaflet/leaflet-src.js')
+        script(src='../javascripts/rate/jquery.rateyo.js')
+        script(src='/javascripts/indexmap2.js')
+
+          //PAGINATION e SEARCH
+        script(src='../bower_components/list.js/dist/list.js')
+        script(src='../bower_components/list.pagination.js/dist/list.pagination.js')
+
+  include ./footer.jade
