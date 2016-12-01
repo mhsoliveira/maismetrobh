@@ -213,7 +213,18 @@ rateList{
     font-size: 28px;
     width:800px;
 }
-
+#loginPop {
+  display: none;
+  text-align: center;
+  padding: 5px;
+  font-size: 20px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  border: #EC6655 solid thick;
+}
+.registo2{
+  display: none;
+}
 .bubble
 {
 display: none;

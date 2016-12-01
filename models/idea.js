@@ -12,7 +12,7 @@ var IdeaSchema = new Schema({
     refs: {type: [String], default:''},
     comments: [{ body: String, user: String, photo: String, uid: String }],
     date: String,
-    user: {username: String, picture: String }
+    user: {username: String, email: String, picture: String }
 },{ collection: 'layercollection'});
 
 

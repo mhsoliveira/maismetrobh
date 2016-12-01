@@ -2,13 +2,26 @@ var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
 var router = express.Router();
-
-
-
+var image_downloader = require('image-downloader');
 // Mongoose import
 var mongoose = require('mongoose');
-
 var Idea = require('../models/idea.js')
+
+router.post('/profile', function(req, res, next) {
+  // Download to a directory and save with an another filename
+  console.log(req.body);
+options = {
+    url: req.body.url,
+    dest: './public/avatars/'+req.body.name+'.jpg',        // Save to /path/to/dest/photo.jpg
+    done: function(err, filename, image) {
+        if (err) {
+            throw err;
+        }
+        console.log('File saved to', filename);
+    },
+};
+image_downloader(options);
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -58,6 +71,10 @@ router.get('/send', function(req, res, next) {
 //Route to render add idea page
 router.get('/addidea', function(req, res, next) {
   res.render('addidea',  {user:req.user} );
+});
+
+router.get('/disclaimer', function(req, res, next) {
+  res.render('disc',  {user:req.user} );
 });
 
 //Route to render contact page
@@ -194,7 +211,7 @@ router.post('/register', function(req, res) {
             return res.render('register', { account : account });
         }
         passport.authenticate('local')(req, res, function () {
-            res.json({ message: 'User Registered'});
+            res.json({user:req.user, message: 'User Registered'});
         });
     });
 });

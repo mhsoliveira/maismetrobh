@@ -13,12 +13,8 @@ block content
     div#logoP.container(style='padding-top:60px')
       div(class="col-xs-12 col-md-5", style='padding: 0px;')
         img.logo(src='../images/Logo.jpg')
-        if (user)
-          div(class="col-xs-12", style='padding: 5px; margin-top:-50px;')
-            a#btnAddIdea(href='/addidea/', class='btn login', style="float: left !important;") Adicionar Trajeto
-        if (!user)
-          div(class="col-xs-12", style='padding: 5px; margin-top:-50px;')
-            a#btnAddIdea(href='/login/', class='btn login', style="float: left !important;") Adicionar Trajeto
+        div(class="col-xs-12", style='padding: 5px; margin-top:-50px;')
+          a#btnAddIdea(href='/addidea/', class='btn login', style="float: left !important;") Adicionar Trajeto
       div(class="col-xs-12 col-md-7")
         div.headline
           div
@@ -39,16 +35,10 @@ block content
               a(class='b', href="/login/")
                 img.thumbs(src='../images/Thumbs/registo.jpg')
                 p.thumbsTxt Crie sua conta
-          if (user)
-            div(class="col-xs-3", style="padding: 0px;")
-              a(class='b', href="/addidea/")
-                img.thumbs(src='../images/Thumbs/desenha.jpg')
-                p.thumbsTxt Proponha seu trajeto
-          if (!user)
-            div(class="col-xs-3", style="padding: 0px;")
-              a(class='b', href="/login/")
-                img.thumbs(src='../images/Thumbs/desenha.jpg')
-                p.thumbsTxt Proponha seu trajeto
+          div(class="col-xs-3", style="padding: 0px;")
+            a(class='b', href="/addidea/")
+              img.thumbs(src='../images/Thumbs/desenha.jpg')
+              p.thumbsTxt Proponha seu trajeto
           div(class="col-xs-3", style="padding: 0px;")
             a(class='b', href="/debate")
               img.thumbs(src='../images/Thumbs/debate.jpg')
