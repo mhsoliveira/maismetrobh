@@ -91,8 +91,7 @@ function newPost(res) {
       desc: $('#inputIdeaDesc').val(),
       user: {
         email: res.email,
-        username: res.name,
-        picture: '/avatars/'+res.id+'.jpg'
+        username: res.name
       },
       date: dateN,
       refs: refs,
@@ -104,24 +103,36 @@ function newPost(res) {
         data: sPicture,
         url: '/profile',
         dataType: 'JSON'
-    }).done($.ajax({
-        type: 'POST',
-        data: newIdea,
-        url: '/newidea',
-        dataType: 'JSON'
-    }).done(function( response ) {
-        // Check for successful (blank) response
-        if (response.message === 'You have got an idea!') {
-          $('#addProp input').val('');
-          window.location.href = "/ideas/"+response.data._id;
-        }
-        else {
-            // If something goes wrong, alert the error message that our service returned
-            $('.loading').hide();
-            $('#btnAddIdea').text('Nova Proposta');
-            alert(err);
+    }).done(
+      function( response ) {
+        console.log(response);
+          // Check for successful (blank) response
+          if (response.url !== 'undefined') {
+            newIdea.user.picture = response.url;
+            $.ajax({
+              type: 'POST',
+              data: newIdea,
+              url: '/newidea',
+              dataType: 'JSON'
+            }).done(function( response ) {
+              // Check for successful (blank) response
+              if (response.message === 'You have got an idea!') {
+                $('#addProp input').val('');
+                window.location.href = "/ideas/"+response.data._id;
+              }
+              else {
+                  // If something goes wrong, alert the error message that our service returned
+                  $('.loading').hide();
+                  $('#btnAddIdea').text('Nova Proposta');
+                  alert(err);
+                }
+              })
           }
-        }));
+          else {
+            alert('Erro na conexão com o Facebook. Por favor, faça o registro local')
+          }
+        }
+      );
 };
 
 function fbreg(event) {

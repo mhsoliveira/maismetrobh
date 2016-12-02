@@ -2,25 +2,17 @@ var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
 var router = express.Router();
-var image_downloader = require('image-downloader');
+var cloudinary = require('cloudinary');
+var cdConfig = require('../cloud.js');
+cloudinary.config(cdConfig);
 // Mongoose import
 var mongoose = require('mongoose');
 var Idea = require('../models/idea.js')
 
 router.post('/profile', function(req, res, next) {
-  // Download to a directory and save with an another filename
-  console.log(req.body);
-options = {
-    url: req.body.url,
-    dest: './public/avatars/'+req.body.name+'.jpg',        // Save to /path/to/dest/photo.jpg
-    done: function(err, filename, image) {
-        if (err) {
-            throw err;
-        }
-        console.log('File saved to', filename);
-    },
-};
-image_downloader(options);
+  cloudinary.uploader.upload(req.body.url, function(result) {
+    res.json(result);
+  }, { public_id: req.body.name });
 });
 
 /* GET home page. */
