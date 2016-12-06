@@ -1,20 +1,5 @@
 // Userlist data array for filling in info box
 var newIdea = Object;
-window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '1714538908820335',
-    xfbml      : true,
-    version    : 'v2.8'
-  });
-};
-
-(function(d, s, id){
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
- }(document, 'script', 'facebook-jssdk'));
 
 // DOM Ready =============================================================
 $(document).ready(function() {
@@ -31,17 +16,27 @@ $(document).ready(function() {
      });
     // Add User button click
     $('button#btnAddIdea').click(function(){
-      if (typeof userId !== 'undefined') {
-        userConfig(user,userId);
+      var errorCount = 0;
+      $('.reff').each(function(index, val) {
+          if($(this).val() === '') { errorCount++; }
+      });
+      if(errorCount===0){
+        if (typeof userId !== 'undefined') {
+          userConfig(user,userId);
+        }
+        else {
+          $('#loginPop').bPopup({
+            follow:[false,false],
+            modalClose: false,
+            onClose: function(){
+              alert('Sua proposta não foi salva');
+              window.location.href = "/addidea/";
+            }
+          });
+        }
       }
-      else {
-        $('#loginPop').bPopup({
-          follow:[false,false],
-          onClose: function(){
-            alert('Sua proposta não foi salva');
-            window.location.href = "/addidea/";
-          }
-        });
+      else{
+        alert('Verifique se todos os campos estao preenchidos corretamente');
       }
     });
 
@@ -56,7 +51,6 @@ $(document).ready(function() {
     });
 
     $('button#register').on('click', reg);
-    $('a#fbutton').on('click', fbreg);
 
 });
 
@@ -66,7 +60,6 @@ $(document).ready(function() {
 
 function newPost(res) {
   //Userfind index
-  console.log(res);
   var monthNames = [
     "Jan", "Fev", "Mar",
     "Abr", "Mai", "Jun", "Jul",
@@ -135,17 +128,18 @@ function newPost(res) {
       );
 };
 
-function fbreg(event) {
-  event.preventDefault();
+function fbreg() {
   $('.loading').show();
+  $('.b-close').hide();
   $('#btnAddIdea').text('Só um min...');
   FB.getLoginStatus(function(response) {
+    console.log(response);
     if (response.status === 'connected') {
       FB.api('/me', {fields: 'id,name,email,picture'}, function(response) {
         newPost(response);
       });
     }
-      else {
+    else {
       FB.login(function(response) {
         if (response.authResponse) {
           FB.api('/me', {fields: 'id,name,email,picture'}, function(response) {
@@ -195,6 +189,7 @@ function fbreg(event) {
                     // If something goes wrong, alert the error message that our service returned
                     $('.loading').hide();
                     $('#btnAddIdea').text('Nova Proposta');
+                    $('.b-close').show();
                     alert(err);
 
                 }
@@ -210,11 +205,12 @@ function fbreg(event) {
 
 function reg(event) {
     event.preventDefault();
+    $('.b-close').hide();
     $('#ger.loading').show();
     $('button#register').text('Só um min...');
     // Super basic validation - increase errorCount variable if any fields are blank
     var errorCount = 0;
-    $('#reg input').each(function(index, val) {
+    $('#log input').each(function(index, val) {
         if($(this).val() === '') { errorCount++; }
     });
     if($('input[name=avatar]:checked').val() === undefined) { errorCount++; }
@@ -245,6 +241,7 @@ function reg(event) {
             userConfig(response.user._id,response.user.username);
         }
         else {
+          $('.b-close').show();
           $('#ger.loading').hide();
           $('button#register').text('Criar Conta');
 
@@ -255,6 +252,7 @@ function reg(event) {
     }
     else {
         // If errorCount is more than 0, error out
+        $('.b-close').show();
         $('#ger.loading').hide();
         $('button#register').text('Criar Conta');
         alert('Verifique se todos os campos estao preenchidos corretamente');

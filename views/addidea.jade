@@ -10,6 +10,21 @@ block content
               var userPic = '#{user.picture}';
         if(!user)
           script(type='text/javascript').
+              window.fbAsyncInit = function() {
+                FB.init({
+                  appId      : '1714538908820335',
+                  xfbml      : true,
+                  version    : 'v2.8'
+                });
+              };
+
+              (function(d, s, id){
+                 var js, fjs = d.getElementsByTagName(s)[0];
+                 if (d.getElementById(id)) {return;}
+                 js = d.createElement(s); js.id = id;
+                 js.src = "//connect.facebook.net/pt_BR/sdk.js";
+                 fjs.parentNode.insertBefore(js, fjs);
+               }(document, 'script', 'facebook-jssdk'));
               var userPic = String;
         div(class='col-sm-12', style='padding-left: 0px; padding-right: 0px')
           h1(style='padding-left: 0px; padding-right: 0px') Nova Proposta
@@ -39,14 +54,11 @@ block content
             div.textpop
               texto  SELECIONE ESSA FERRAMENTA
           div#loginPop
-            div(style='padding-top:5px !important')
-              textoblue A SUA LINHA FOI SALVA.
+            div(style='margin-top:15px !important')
+              textored Um último passo
             div
-              textored Obrigado!
-            div(style='padding-top:0px !important')
-              textored(style='font-size:16px') Para torna-la pública precisamos do seu registro:
-            a#fbutton(class='col-xs-12', href="#")
-              img(src='../images/FACEBOOK.JPG')
+              textored para salvar a sua proposta!
+            fb:login-button(style='margin-top:15px !important; padding-bottom:10px',scope="public_profile,email", onlogin="fbreg()", data-size="xlarge")
             div.texto(style='font-style:italic') ou
             div#log(style='width:85%;margin-left:auto;margin-right:auto;text-align: left !important; margin-top:10px !important')
               div.texto Nome
@@ -67,7 +79,7 @@ block content
                     img.avatarlog(src='../images/jabutissara avatar.png')
                   div.col-xs-12(style='padding:0')
                     input(type="radio", name="avatar", value="../images/Jabutissara.png")
-              div.col-xs-12
+              div.col-xs-12(style='margin-bottom:15px')
                 button#register(class='btn login') Criar Conta
                 img#ger.loading(src='../images/poi.gif', alt="Só um minutinho...")
             a(class='b-close')
@@ -84,7 +96,7 @@ block content
             input#inputIdeaRef3.reff(type='text', placeholder='ex. #UFMG, #taquaril, #hospJuliaKubitscheck', class="incomment",  style='width:100%')
           div(class='col-sm-12')
             .h2 Descreva como essa linha atenderia suas necessidades
-            textarea(id="inputIdeaDesc", cols="40", rows="7", placeholder='ex. Usaria muito, porque cria um melhor acesso ao hospital, universidade, meu local de trabalho, etc...', class="incomment",  style='width:100%')
+            textarea(class='reff',id="inputIdeaDesc", cols="40", rows="7", placeholder='ex. Usaria muito, porque cria um melhor acesso ao hospital, universidade, meu local de trabalho, etc...', class="incomment",  style='width:100%')
           div(class='col-sm-12')
             button#btnAddIdea(class='btn login col-sm-5') Salvar Proposta
             img.loading(src='../images/poi.gif', alt="Só um minutinho...")
