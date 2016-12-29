@@ -3,6 +3,7 @@ html
     title MaismetroBH
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(charset="utf-8")
+    link(rel='stylesheet', href='../stylesheets/navbar-static-top.css')
     link(rel='stylesheet', href='../stylesheets/leaflet/leaflet.css')
     link(rel='stylesheet', href='../stylesheets/leaflet/leaflet.draw.css')
     link(rel='stylesheet', href='../stylesheets/jquery/jquery-ui.css')
@@ -15,33 +16,43 @@ html
     script(src='../javascripts/bootstrap/js/bootstrap.min.js')
     script(src='../javascripts/leaflet/leaflet.js')
 
-    header(style='margin-bottom:70px')
-      nav(class='navbar banner navbar-fixed-top')
-        div.container(style='padding:0')
-          a#mainLogo.hidden-xs.col-md-4(href="/")
-            img.bannerLogo(src='../images/+metro.png')
-          ul.col-xs-12.col-md-8(class="list-inline", style='float: right; margin-top:25px; margin-right:15px; width:400px')
-            if (!user)
-              li.ico.col-xs-3
-                a(href="/", style="color: rgb(255, 255, 255); float: right") Início
-              li.ico.col-xs-3
-                a(href="/projeto", style="color: rgb(255, 255, 255); float: right") Projeto
-              li.ico.col-xs-3
-                a(href="/contato", style="color: rgb(255, 255, 255); float: right") Contato
-              li.ico.col-xs-3
-                a(href="/login", style="color: rgb(255, 255, 255); float: right") Login
-            if (user)
-              li.ico.col-xs-2
-                a(href="/", style="color: rgb(255, 255, 255); float: right") Início
-              li.ico.col-xs-3
-                a(href="/projeto", style="color: rgb(255, 255, 255); float: right") Projeto
-              li.ico.col-xs-3
-                a(href="/contato", style="color: rgb(255, 255, 255); float: right") Contato
-              li.icofin.col-xs-4
-                div.col-xs-9(style='padding-right:0px; padding-left:0px')
-                  a.col-xs-12(href="/ideasfind/"+'#{user.username}', style="color: rgb(255, 255, 255); font-size:8px; text-align:right; padding-right:5px; padding-left:5px") Configurações
-                  a.col-xs-12(href="/logout", style="color: rgb(255, 255, 255); font-size:8px; text-align:right; padding-right:5px; padding-left:5px") Logout
-                div.col-xs-3(style='padding-left:0px; margin-top:-8px;')
-                  img(src='#{user.picture}', style="width:30px;height:30px;border-radius:1px; border-radius:100%")
+    header
+      nav(class='navbar banner navbar-default navbar-static-top')
+        div.container
+          div.navbar-header
+            button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+              span(class="sr-only") Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a#navbar-brand(href="/")
+              img.bannerLogo(src='../images/+metro.png')
+          div(id="navbar" class="navbar-collapse collapse")
+            ul.nav.navbar-nav.navbar-right.navtext
+              if (!user)
+                li
+                  a(href="/", style="color: rgb(255, 255, 255)") Início
+                li
+                  a(href="/projeto", style="color: rgb(255, 255, 255)") Projeto
+                li
+                  a(href="/contato", style="color: rgb(255, 255, 255)") Contato
+                li
+                  a(href="/login", style="color: rgb(255, 255, 255)") Login
+              if (user)
+                li
+                  a(href="/", style="color: rgb(255, 255, 255)") Início
+                li
+                  a(href="/projeto", style="color: rgb(255, 255, 255)") Projeto
+                li
+                  a(href="/contato", style="color: rgb(255, 255, 255)") Contato
+                li.dropdown
+                  a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false", style='color:#fff !important') Menu
+                    span(class="caret")
+                  ul(class="dropdown-menu dropmenu")
+                    li
+                      img(src='#{user.picture}', style="width:60px;height:60px;border-radius:100%;display: block;margin: auto")
+                      a(href="/ideasfind/"+'#{user.username}', style="text-align:center; margin-top:10px; font-weight:bold !important") #{user.username}
+                      a(href="/logout", style="text-align:center") Logout
+
 
     block content

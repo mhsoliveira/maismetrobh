@@ -81,7 +81,8 @@ block content
                     input(type="radio", name="avatar", value="../images/Jabutissara.png")
               div.col-xs-12(style='margin-bottom:15px')
                 button#register(class='btn login') Criar Conta
-                img#ger.loading(src='../images/poi.gif', alt="Só um minutinho...")
+              div#progressbar.progress.col-xs-12(style="display:none")
+                div#bar(class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style='width:30%')
             a(class='b-close')
               img(src='../images/close.png')
         div(id='addProp', class='col-sm-4', style='padding-left: 0px; padding-right: 0px')
@@ -96,7 +97,7 @@ block content
             input#inputIdeaRef3.reff(type='text', placeholder='ex. #UFMG, #taquaril, #hospJuliaKubitscheck', class="incomment",  style='width:100%')
           div(class='col-sm-12')
             .h2 Descreva como essa linha atenderia suas necessidades
-            textarea(class='reff',id="inputIdeaDesc", cols="40", rows="7", placeholder='ex. Usaria muito, porque cria um melhor acesso ao hospital, universidade, meu local de trabalho, etc...', class="incomment",  style='width:100%')
+            textarea(id="inputIdeaDesc", cols="40", rows="7", placeholder='ex. Usaria muito, porque cria um melhor acesso ao hospital, universidade, meu local de trabalho, etc...', class="incomment",  style='width:100%')
           div(class='col-sm-12')
             button#btnAddIdea(class='btn login col-sm-5') Salvar Proposta
             img.loading(src='../images/poi.gif', alt="Só um minutinho...")
@@ -106,3 +107,4 @@ block content
       script(src='../bower_components/bPopup/jquery.bpopup.min.js')
       script(src='/javascripts/drawmap.js')
       script(src='/javascripts/global.js')
+      script(src='/javascripts/analytics.js')

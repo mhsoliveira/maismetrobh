@@ -10,12 +10,11 @@ block content
     meta(name="description", content="+METRO é uma plataforma colaborativa de apoio às decisões sobre o transporte público em Belo Horizonte. Inspirado na Linie Funf, desenvolvida na cidade de Hamburg, o +Metro propõe criar um espaço para a formação de um debate público amplo, informativo e empoderador.")
 
   body
-    div#logoP.container(style='padding-top:60px')
-      div(class="col-xs-12 col-md-5", style='padding: 0px;')
+    div.container
+      div(class="col-xs-12 col-md-5", style='padding-right:0px;padding-left:0px;')
         img.logo(src='../images/Logo.jpg')
-        div(class="col-xs-12", style='padding: 5px; margin-top:-50px;')
-          a#btnAddIdea(href='/addidea/', class='btn login', style="float: left !important;") Adicionar Trajeto
-      div(class="col-xs-12 col-md-7")
+        a#btnAddIdea(href='/addidea/' class="btn btn-lg btn-danger" role="button" style='position:absolute;z-index:1; bottom: 0; left: 0;') Adicionar Trajeto
+      div(class="col-xs-12 col-md-7", style='padding-right:0px;padding-left:0px;')
         div.headline
           div
             texto Uma linha de
@@ -62,18 +61,16 @@ block content
 
 
       //icones de navegacao
-    div.container(style='padding-top:60px; !important')
-      div(id="test-list", class="col-md-6 col-xs-12", style='padding:0px;')
-        h2(class="col-xs-12", style='margin: auto; padding-left:5px; padding-right:15px; font-size:36px')
-          texto Trajetos
-          textored  +
-          texto  perto de você
-        ul.row(id='refs', class='list', style='margin: auto; padding-left:0px; padding-right:10px;')
+    div.container
+      div(id="test-list")
+        div(style='text-align:center;font-family:junegull !important; font-size:40px; background-color: #1ab9d8')
+          textoyellow Qual é a sua proposta para o metrô de BH?
+        ul.row(id='refs', class='list', style='margin: auto')
 
           //icone para cada uma das ideias
 
           - each Idea in ideas
-            li.row(id='node', class='col-xs-12', style='margin: auto; padding-left:5px; padding-right:5px;')
+            li(id='node', style='margin: auto;')
               div(style='position:absolute;z-index:1')
                 h4
                   span.label.label-danger(class='refs1')= Idea.refs[0]
@@ -87,27 +84,17 @@ block content
 
                   //desenho e rate
 
-                  div.draw
-                    div(id='#{Idea.id}')(style='height: 250px')
-                  div.row(style='margin-top: 8px; margin-left:0px; margin-right:0px')
-                    img.avatar(src=Idea.user.picture, style='float:left; padding: 0px; background-color:#fff')
-                    div(class='col-xs-8 col-md-10', style='margin-top: auto; margin-bottom: auto; padding: 0px; margin-left:5px;')
-                      p.txicon(class='col-xs-12 uname', style='padding-left: 6px')= Idea.user.username
-                      div(id='#{Idea.id}'+'m', class='col-xs-10')
-                      p.txicon(class='col-xs-2', style='padding-left: 6px')= "("+Idea.rating.length+")"
-                      p.txicon(class='col-xs-12', style='padding-left: 6px')= "Comentários "+Idea.comments.length
-                      div(style='margin-top:13px; margin-bottom:41px')
-        a(href='/debate', style='margin:auto !important')
-          button.btn.btn-lg.btn-warning
-            textored  +
-            textoblue Propostas
-      div(class="col-md-6 col-xs-12", style='padding-left:0px; !important; margin:auto;')
-        h2(class="row", style='margin: auto; padding-left:0px; padding-right:15px; font-size:36px')
-          div
-            texto O seu trajeto em 3 passos:
-        div.row(style='margin: 0px; margin-top:10px; padding-left:2px; padding-right:2px; font-size:36px')
-          iframe(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FMaisMetroBH%2Fvideos%2F615778978594897%2F&show_text=0&" width='100%' height="250px" style="border:solid;border-color:#EC6655;border-width:2px;overflow:hidden;" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true")
-
+                  div(id='#{Idea.id}')(style='height: 250px; width:100%; border-radius:5px')
+              div.userbox(style='position:absolute;z-index:1; bottom: 20px; right: 25px; padding:5px !important')
+                img.avatar(src=Idea.user.picture, style='float:left; background-color:#fff')
+                div.col-xs-8
+                  p.txicon(class='uname')= Idea.user.username
+                  div.col-xs-10(id='#{Idea.id}'+'m', style='padding-left:0px')
+                  p.col-xs-2.txicon= "("+Idea.rating.length+")"
+                  p.txicon= "Comentários "+Idea.comments.length
+        div(style='margin-top:2px')
+          a(class="twitter-grid" data-limit="3" data-partner="tweetdeck" href="https://twitter.com/mais_metro_bh/timelines/814178138741673984") MetroBH
+           script(async src="//platform.twitter.com/widgets.js" charset="utf-8")
           // pagination
 
 
@@ -118,6 +105,7 @@ block content
         script(src='../javascripts/leaflet/leaflet-src.js')
         script(src='../javascripts/rate/jquery.rateyo.js')
         script(src='/javascripts/indexmap.js')
+        script(src='/javascripts/analytics.js')
 
           //PAGINATION e SEARCH
         script(src='../javascripts/slider/jquery.bxslider.min.js')

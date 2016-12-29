@@ -102,6 +102,7 @@ function newPost(res) {
           // Check for successful (blank) response
           if (response.url !== 'undefined') {
             newIdea.user.picture = response.url;
+            $("#bar").css("width", '90%');
             $.ajax({
               type: 'POST',
               data: newIdea,
@@ -111,6 +112,7 @@ function newPost(res) {
               // Check for successful (blank) response
               if (response.message === 'You have got an idea!') {
                 $('#addProp input').val('');
+                $("#bar").css("width", '100%');
                 window.location.href = "/ideas/"+response.data._id;
               }
               else {
@@ -132,17 +134,20 @@ function fbreg() {
   $('.loading').show();
   $('.b-close').hide();
   $('#btnAddIdea').text('Só um min...');
+  $('#progressbar').show();
   FB.getLoginStatus(function(response) {
     console.log(response);
     if (response.status === 'connected') {
       FB.api('/me', {fields: 'id,name,email,picture'}, function(response) {
         newPost(response);
+        $("#bar").css("width", '50%');
       });
     }
     else {
       FB.login(function(response) {
         if (response.authResponse) {
           FB.api('/me', {fields: 'id,name,email,picture'}, function(response) {
+            $("#bar").css("width", '50%');
             $('.loading').show();
             $('#btnAddIdea').text('Só um min...');
             var monthNames = [
@@ -171,6 +176,7 @@ function fbreg() {
                 type: newDes.type,
                 coordinates: newDes.coordinates,
               };
+              $("#bar").css("width", '90%');
             // Use AJAX to post the object to our addProp service
             $.ajax({
                 type: 'POST',
@@ -182,12 +188,14 @@ function fbreg() {
                 // Check for successful (blank) response
                 if (response.message === 'You have got an idea!') {
                   $('#addProp input').val('');
+                  $("#bar").css("width", '100%');
                   window.location.href = "/ideas/"+response.data._id;
                 }
                 else {
 
                     // If something goes wrong, alert the error message that our service returned
                     $('.loading').hide();
+                    $('#progressbar').hide();
                     $('#btnAddIdea').text('Nova Proposta');
                     $('.b-close').show();
                     alert(err);
@@ -207,6 +215,7 @@ function reg(event) {
     event.preventDefault();
     $('.b-close').hide();
     $('#ger.loading').show();
+    $('#progressbar').show();
     $('button#register').text('Só um min...');
     // Super basic validation - increase errorCount variable if any fields are blank
     var errorCount = 0;
@@ -225,6 +234,7 @@ function reg(event) {
             password: $('input#inputNewPass').val(),
           };
         // Use AJAX to post the object to our addProp service
+        $("#bar").css("width", '50%');
         $.ajax({
             type: 'POST',
             data: userReg,
@@ -243,6 +253,7 @@ function reg(event) {
         else {
           $('.b-close').show();
           $('#ger.loading').hide();
+          $('#progressbar').hide();
           $('button#register').text('Criar Conta');
 
             // If something goes wrong, alert the error message that our service returned
@@ -254,6 +265,7 @@ function reg(event) {
         // If errorCount is more than 0, error out
         $('.b-close').show();
         $('#ger.loading').hide();
+        $('#progressbar').hide();
         $('button#register').text('Criar Conta');
         alert('Verifique se todos os campos estao preenchidos corretamente');
         return false;
@@ -261,6 +273,7 @@ function reg(event) {
 };
 
 function userConfig(id,name) {
+  $("#bar").css("width", '70%');
   userId = name;
   user = id;
   addIdea();
@@ -308,7 +321,7 @@ function addIdea() {
             type: newDes.type,
             coordinates: newDes.coordinates,
           };
-        console.log(newIdea);
+        $("#bar").css("width", '90%');
         // Use AJAX to post the object to our addProp service
         $.ajax({
             type: 'POST',
@@ -320,6 +333,7 @@ function addIdea() {
             // Check for successful (blank) response
             if (response.message === 'You have got an idea!') {
               $('#addProp input').val('');
+              $("#bar").css("width", '100%');
               window.location.href = "/ideas/"+response.data._id;
             }
             else {
