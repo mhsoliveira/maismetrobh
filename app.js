@@ -16,9 +16,9 @@ require('dotenv').config();
 
 // Connection URL
 
-mongoose.connect(process.env.MONGO_DATA);
+//mongoose.connect(process.env.MONGO_DATA);
 
-//mongoose.connect("mongodb://localhost:27017/metrobh");
+mongoose.connect("mongodb://localhost:27017/metrobh");
 
 
 var routes = require('./routes/index');
