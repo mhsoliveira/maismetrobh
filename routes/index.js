@@ -8,6 +8,7 @@ cloudinary.config(cdConfig);
 // Mongoose import
 var mongoose = require('mongoose');
 var Idea = require('../models/idea.js')
+var Adm = require('../models/rmbh.js')
 
 router.post('/profile', function(req, res, next) {
   cloudinary.uploader.upload(req.body.url, function(result) {
@@ -32,6 +33,12 @@ router.get('/debate', function(req, res, next) {
 
 router.get('/all', function(req, res, next) {
   Idea.find({ type: "LineString" },{}, function (err, data) {
+          res.json(data);
+      });
+});
+
+router.get('/rmbh', function(req, res, next) {
+  Adm.findOne(function (err, data) {
           res.json(data);
       });
 });
@@ -63,6 +70,10 @@ router.get('/send', function(req, res, next) {
 //Route to render add idea page
 router.get('/addidea', function(req, res, next) {
   res.render('addidea',  {user:req.user} );
+});
+
+router.get('/colormap', function(req, res, next) {
+  res.render('map',  {user:req.user} );
 });
 
 router.get('/disclaimer', function(req, res, next) {

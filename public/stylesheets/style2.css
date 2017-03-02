@@ -790,3 +790,11 @@ p{
   border-radius: 2px;
   border: solid;
 }
+
+.colormap{
+  height: 700px;
+  border-color: #ec6655 !important;
+  border-width: thin;
+  border-radius: 2px;
+  border: solid;
+}
