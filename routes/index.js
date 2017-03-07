@@ -103,6 +103,17 @@ router.get('/ideasfind/:user', function (req, res) {
   });
 });
 
+//Route to adm by COD_UP'
+router.get('/rmbhmap/:NOM_UP', function (req, res) {
+  Adm.find({}, {features: {$elemMatch: {"properties.NOM_UP": req.params.NOM_UP}}}, function(err, data) {
+    Idea.find({ coordinates : {$geoIntersects : { $geometry : data[0].features[0].geometry}}}, function(err, docs) {
+      if (err)
+        res.send(err);
+      res.json(docs);
+    })
+  })
+});
+
 //Route to Find by Id
 router.get('/ideasfind2/:idea_id', function (req, res) {
   Idea.findById(req.params.idea_id, function(err, data) {

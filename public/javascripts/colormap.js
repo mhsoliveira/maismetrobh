@@ -44,7 +44,9 @@ function resetHighlight(e) {
 }
 
 function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
+    $.getJSON('/rmbhmap/'+e.target.feature.properties.NOM_UP, function(docs) {
+      addLayer(docs)
+    });
 }
 
 function onEachFeature(feature, layer) {
@@ -60,5 +62,26 @@ $.getJSON('/rmbh', function(data) {
     style: style,
     onEachFeature: onEachFeature
 });
+  console.log(admap)
   admap.addTo(map);
 });
+
+function addLayer(layer) {
+  var leaf_layer;
+  var myStyle = {
+      "color": '#1ab9d8',
+      "weight": 5,
+      "opacity": 1
+  };
+  leaf_layer = L.geoJson(layer, {
+       style: myStyle
+  });
+  leaf_layer.addTo(map);
+  };
+
+  var MyCustomMarker = new L.Icon({
+          shadowUrl: null,
+          iconAnchor: new L.Point(11, 12),
+          iconSize: new L.Point(20, 20),
+          iconUrl: '../images/Metro_Logo.png'
+  });
