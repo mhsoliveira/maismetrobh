@@ -1,6 +1,7 @@
 var map = L.map("map").setView([-19.9129,-43.9409], 12);
 L.tileLayer('http://b.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 var admap;
+var layer_line;
 
 function getColor(d) {
     return d > 50 ? '#800026' :
@@ -45,6 +46,9 @@ function resetHighlight(e) {
 
 function zoomToFeature(e) {
     $.getJSON('/rmbhmap/'+e.target.feature.properties.NOM_UP, function(docs) {
+      if (typeof layer_line != "undefined") {
+        map.removeLayer(layer_line)
+      }
       addLayer(docs)
     });
 }
@@ -62,8 +66,8 @@ $.getJSON('/rmbh', function(data) {
     style: style,
     onEachFeature: onEachFeature
 });
-  console.log(admap)
   admap.addTo(map);
+  map.fitBounds(admap.getBounds())
 });
 
 function addLayer(layer) {
@@ -77,6 +81,7 @@ function addLayer(layer) {
        style: myStyle
   });
   leaf_layer.addTo(map);
+  layer_line = leaf_layer;
   };
 
   var MyCustomMarker = new L.Icon({
@@ -85,3 +90,15 @@ function addLayer(layer) {
           iconSize: new L.Point(20, 20),
           iconUrl: '../images/Metro_Logo.png'
   });
+
+  function addPoints(layer) {
+    var leaf_layer;
+    layer.type = "MultiPoint";
+    leaf_layer = L.geoJson(layer, {
+      pointToLayer: function (feature, latlng) {
+      return L.marker(latlng, {icon: MyCustomMarker});
+        }
+    });
+    leaf_layer.addTo(map);
+    map.fitBounds(leaf_layer.getBounds());
+    };

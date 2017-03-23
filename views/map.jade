@@ -3,6 +3,7 @@ extends layout2
 block content
     head
     body
-      #map(class='colormap')
-      script(src='/javascripts/colormap.js')
+      div.container
+        #map(class='colormap')
+        script(src='/javascripts/colormap.js')
     include ./footer.jade
