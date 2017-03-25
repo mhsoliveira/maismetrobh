@@ -54,7 +54,7 @@ function zoomToFeature(e) {
       }
       var acc2=[];
       docs.reduce(function(acc, val) {
-        acc2.push(L.geoJson(val).bindPopup('<img class="avatar2 col-xs-2" src='+val.user.picture+'><div class="col-xs-10"><b>'+val.user.username+'</b><button onclick=window.location="/ideas/'+val._id+'" type="button" class="btn-xs btn btn-success">Ir para a proposta</button></div>'));
+        acc2.push(L.geoJson(val).bindPopup('<div class="flexbox" ><img class="avatar2" src='+val.user.picture+'><div class="flex-item"><p>'+val.user.username+'</p><button onclick=window.location="/ideas/'+val._id+'" type="button" class="btn-xs btn btn-success">Ir para a proposta</button></div><div>'));
       },0)
       layer_line = L.layerGroup(acc2)
       layer_line.addTo(map);
@@ -109,8 +109,11 @@ function addLayer(layer) {
 
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
+      if (typeof props != "undefined" && props.sumcount == null) {
+        props.sumcount = 'Nenhuma'
+      }
         this._div.innerHTML = '<h4>Propostas por região</h4>' +  (props ?
-            '<b>' + props.NOM_UP + '</b><br />' + props.sumcount + ' Linhas de metrô'
+            '<b>' + props.NOM_UP + '</b><br />' + props.sumcount + ' linha(s) de metrô'
             : 'Passe por cima das regiões para ver o número de propostas submetidas');
     };
 

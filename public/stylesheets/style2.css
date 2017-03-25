@@ -732,10 +732,18 @@ p{
 .avatar2{
   height: 31px;
   width: 31px;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  margin-top: 5px !important;
+  margin-right: 5px !important;
   background-color: #ffd746;
   border-radius: 100%
+}
+
+.flexbox{
+    display: flex;
+}
+
+.flex-item{
+    flex-grow: 1;
 }
 
 .refs1{
