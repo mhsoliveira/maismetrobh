@@ -2,6 +2,7 @@ var map = L.map("map").setView([-19.9129,-43.9409], 13);
 L.tileLayer('https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 var admap;
 var layer_line;
+var layer_line2;
 
 function getColor(d) {
     return d > 50 ? '#800026' :
@@ -51,13 +52,37 @@ function zoomToFeature(e) {
     $.getJSON('/rmbhmap/'+e.target.feature.properties.NOM_UP, function(docs) {
       if (typeof layer_line != "undefined") {
         map.removeLayer(layer_line)
+        map.removeLayer(layer_line2)
       }
       var acc2=[];
+      var acc4=[];
+      var acc3= 0;
+      var color=['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd'];
       docs.reduce(function(acc, val) {
-        acc2.push(L.geoJson(val).bindPopup('<div class="flexbox" ><img class="avatar2" src='+val.user.picture+'><div class="flex-item"><p>'+val.user.username+'</p><button onclick=window.location="/ideas/'+val._id+'" type="button" class="btn-xs btn btn-success">Ir para a proposta</button></div><div>'));
+        var myStyle = {
+          color: color[acc3],
+          opacity: 1,
+          weight: 3
+        };
+        var bla = {
+          color: '#000',
+          opacity: 0.6,
+          weight: 5
+        };
+        acc4.push(L.geoJson(val, {style: bla}).bindPopup('<div class="flexbox" ><img class="avatar2" src='+val.user.picture+'><div class="flex-item"><p>'+val.user.username+'</p><button onclick=window.location="/ideas/'+val._id+'" type="button" class="btn-xs btn btn-success">Ir para a proposta</button></div><div>'));
+        acc2.push(L.geoJson(val, {style: myStyle}).bindPopup('<div class="flexbox" ><img class="avatar2" src='+val.user.picture+'><div class="flex-item"><p>'+val.user.username+'</p><button onclick=window.location="/ideas/'+val._id+'" type="button" class="btn-xs btn btn-success">Ir para a proposta</button></div><div>'));
+        if (acc3 == 9) {
+          acc3 = 0
+        }
+        else {
+          acc3++
+          console.log(acc3)
+        }
       },0)
-      layer_line = L.layerGroup(acc2)
+      layer_line = L.layerGroup(acc4)
+      layer_line2 = L.layerGroup(acc2)
       layer_line.addTo(map);
+      layer_line2.addTo(map);
     });
 }
 
@@ -77,28 +102,6 @@ $.getJSON('/rmbh', function(data) {
   admap.addTo(map);
   map.fitBounds(admap.getBounds())
 });
-
-function addLayer(layer) {
-  var leaf_layer;
-  var myStyle = {
-      "color": '#1ab9d8',
-      "weight": 5,
-      "opacity": 1
-  };
-  leaf_layer = L.geoJson(layer, {
-       style: myStyle
-  });
-  leaf_layer.addTo(map);
-  layer_line = leaf_layer;
-  };
-
-  var MyCustomMarker = new L.Icon({
-          shadowUrl: null,
-          iconAnchor: new L.Point(11, 12),
-          iconSize: new L.Point(20, 20),
-          iconUrl: '../images/Metro_Logo.png'
-  });
-
     var info = L.control();
 
     info.onAdd = function (map) {
